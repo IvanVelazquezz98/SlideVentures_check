@@ -1,0 +1,118 @@
+**Resumen de combinaciones y posibilidades del motor narrativo actual en SlideVentures**
+
+Este resumen enumera todas las capacidades actuales del motor narrativo de tu juego, junto con las posibilidades de combinación que permiten construir una historia compleja, interactiva y ramificada.
+
+---
+
+### ✨ 1. Condiciones para mostrar opciones o eventos (`condition`)
+
+Puedes condicionar cualquier opción o evento a:
+
+#### a) Etiquetas del jugador
+
+* `etiquetasIncluye`: muestra la opción solo si el jugador tiene todas esas etiquetas.
+* `etiquetasExcluye`: oculta la opción si el jugador tiene alguna de esas etiquetas.
+* `etiquetas`: sinónimo de `Incluye`, mantiene compatibilidad.
+
+#### b) Estadísticas del jugador (`stats`)
+
+* Puedes condicionar usando:
+
+  * `fuerza: 5` (igual a 5)
+  * `fuerza: { gte: 5 }` (mayor o igual a 5)
+  * `fuerza: { lte: 2 }` (menor o igual a 2)
+  * `fuerza: { eq: 3 }` (exactamente 3)
+
+#### c) Origen del jugador
+
+* `origen: "campesino"` o cualquier otro valor que hayas definido.
+
+---
+
+### 📊 2. Efectos aplicables al jugador (`effects`)
+
+Cualquier opción puede modificar las estadísticas del jugador:
+
+```js
+{ salud: -2, dinero: +5, inteligencia: +1 }
+```
+
+Esto se usa para representar consecuencias de acciones.
+
+---
+
+### 🌪️ 3. Ramificación de eventos (`next`)
+
+Puedes decidir qué evento sigue:
+
+* Valor único: `next: "evento_id"`
+* Array aleatorio: `next: ["evento1", "evento2"]` (elige uno al azar)
+
+---
+
+### ⚔️ 4. Combates y dados (`special: "roll_dado"`)
+
+Opciones que lanzan un dado + bonus y comparan contra dificultad:
+
+```js
+roll: {
+  stat: "fuerza",
+  dificultad: 3,
+  bonus: 1,
+  onSuccess: "evento_exito",
+  onFail: "evento_fracaso"
+}
+```
+
+Esto permite:
+
+* Tiradas de fuerza, inteligencia u otra stat
+* Bonus (ej: por objetos o decisiones previas)
+* Eventos distintos según el resultado
+
+---
+
+### 🛠️ 5. Opciones generadas por el motor (`generateCombatOptions`)
+
+Para eventos con combate, se genera automáticamente:
+
+* Atacar con puños (si no tenés armas)
+* Atacar con daga (si tenés `daga`)
+* Usar magia (si sos `brujo`)
+* Huir (siempre disponible)
+
+---
+
+### 📻 6. Sonido y ambientación
+
+Cada evento puede tener:
+
+* `sound`: archivo de sonido para ambientar
+* `background`: imagen de fondo del evento
+
+---
+
+### ✨ 7. Posibilidades de combinación destacadas
+
+* Eventos que solo ocurren si el jugador **no tiene** una etiqueta: bloqueos narrativos.
+* Eventos que cambian si ya hiciste algo: narrativa reactiva.
+* Dados en caminos no lineales (ej: forzar cofre, escapar de prisión, convencer a alguien).
+* Combates escalables con dificultad y consecuencias distintas.
+* Sistema de objetos y habilidades que impactan en stats y acceso.
+
+---
+
+### 🔧 8. Escalabilidad sin cambios técnicos
+
+Ya podés crear sin agregar lógica nueva:
+
+* Rutas alternativas
+* Misiones opcionales
+* Puertas secretas
+* Finales múltiples
+* Trampas y consecuencias ocultas
+* Objetos clave (llaves, armas, ganzúa)
+
+---
+
+Este sistema te permite construir un juego narrativo profundo, totalmente manejado con eventos y condiciones sin necesidad de programación extra. Lo que escribas en los eventos puede hacer casi todo.

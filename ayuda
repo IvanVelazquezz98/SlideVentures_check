@@ -1,0 +1,8 @@
+
+eas build --profile development --platform android  para crear la app modo desarrollo
+
+npx expo start --clear para desplegar el servidor de desarrollo de expo
+
+eas build --platform android --profile production para abb
+
+eas build --profile apk --platform android para apk

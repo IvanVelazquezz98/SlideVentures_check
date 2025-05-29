@@ -1,0 +1,33 @@
+{
+  "name": "slideventures",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "expo": "^51.0.0",
+    "expo-av": "~14.0.7",
+    "expo-dev-client": "~4.0.29",
+    "expo-status-bar": "~1.12.1",
+    "expo-font": "~13.0.0",
+    "react": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-reanimated": "~3.17.0",
+    "react-redux": "^8.0.5",
+    "@reduxjs/toolkit": "^2.2.0",
+    "styled-components": "^5.3.6",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0"
+  },
+  "private": true
+}

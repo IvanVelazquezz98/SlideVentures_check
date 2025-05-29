@@ -1,0 +1,52 @@
+✅ Etapa actual (completada):
+Sistema de eventos y decisiones con etiquetas.
+
+Motor de dados funcional con animación.
+
+Condiciones dinámicas (etiquetasIncluye, excluye, stats, etc.).
+
+Sistema de sonido y fondos por evento.
+
+Combate con decisiones ramificadas.
+
+🧩 Próximas mejoras a implementar:
+1️⃣ Sistema de edad del jugador
+ Variable edad en el estado del jugador (ej. player.edad = 18)
+
+ En cada evento que se marque como “pasa el tiempo” (evento.avanzaEdad: true), sumar +1 a la edad.
+
+ Opcional: mostrar la edad en pantalla o usarla como condición (edad >= 30).
+
+2️⃣ Log / Diario del jugador
+ Crear una propiedad log: [] en el estado del jugador.
+
+ Guardar event.title (o event.id) al entrar en cada evento importante.
+
+ Crear un componente que muestre el log si el jugador lo abre.
+
+ Opcional: permitir que ciertos eventos solo ocurran si están o no están en el log.
+
+3️⃣ Bonos o penalizaciones narrativas adicionales
+ Usar stats como contadores personalizados si hiciera falta (ej. corrupción, maldición, karma).
+
+ Usar bonus variables en decisiones según etiquetas (ej. si tenés ganzua, bonus: +2).
+
+4️⃣ Finales múltiples
+ Crear etiquetas como final_malo, final_bueno, final_oculto en eventos clave.
+
+ Mostrar en pantalla o guardar cuál fue el final desbloqueado.
+
+5️⃣ Balance y control de dificultad
+ Revisar qué estadísticas usan más los eventos (fuerza, inteligencia, etc.).
+
+ Asegurar que el jugador tenga oportunidades de subirlas en diferentes ramas del juego.
+
+ Ajustar dificultad de combates y dados según progreso.
+
+🛠️ Extras opcionales (si hay tiempo o ganas):
+ Agregar etiquetas con tiempo límite (ej. herido que se elimina después de X eventos).
+
+ Sistema de decisiones ocultas según edad, log, o stats.
+
+ Agregar un sistema de pistas (si el jugador falla muchas veces).
+

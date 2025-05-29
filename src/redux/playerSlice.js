@@ -16,7 +16,8 @@ const initialState = {
     edad: 18,
   },
   etiquetas: [],
-  currentEventId: "intro_1",
+  //currentEventId: "intro_1",
+  currentEventId: "origen_huerfano_1",
   eventLog: [],
 };
 

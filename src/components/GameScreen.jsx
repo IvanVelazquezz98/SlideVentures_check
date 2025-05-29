@@ -21,7 +21,7 @@ import DraggableCard from "./Cards/DraggableCards";
 import ParticleExplosion from "../components/Cards/Particle";
 import uuid from "react-native-uuid";
 import StatAnimated from "./User/Stats/StatAnimated";
-import { ImageBackground, StyleSheet, View } from "react-native";
+import { ImageBackground, StyleSheet, View, TouchableOpacity, Image} from "react-native";
 import backgroundDefault from "../../assets/backgrounds/intro/intro_1.png";
 import Animated, {
   useSharedValue,
@@ -34,6 +34,7 @@ import marcoUsuario from "../../assets/marcoPj.png";
 import UserPanel from "./User/UserPanel";
 import DadoVisual from "./DadoVisual";
 import { asignarAvatarDesdeEtiquetas } from "../utils/asignarAvatar";
+import btnToggleCards from "../../assets/backgrounds/ocultarCartas.png";
 
 export default function GameScreen() {
   const player = useSelector((state) => state.player);
@@ -48,6 +49,14 @@ export default function GameScreen() {
   const soundRef = useRef(null);
   const [diceRoll, setDiceRoll] = useState(null);
   const [pendingRollOption, setPendingRollOption] = useState(null);
+  const cardsOpacity = useSharedValue(1);
+  const [cardsVisible, setCardsVisible] = useState(true);
+
+  const cardsAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: cardsOpacity.value,
+    zIndex: 1000,
+    elevation: 9999,
+  }));
 
   useEffect(() => {
     if (background !== currentBg) {
@@ -214,7 +223,6 @@ export default function GameScreen() {
     if (option.next) {
       const nextId = resolveNext(option.next);
 
-
       aplicarEvento(nextId);
     }
   };
@@ -291,28 +299,51 @@ export default function GameScreen() {
             bonus={pendingRollOption?.roll?.bonus}
           />
         )}
-        <CardsRow>
-          {optionsWithIds.map((opt, i) => (
-            <React.Fragment key={opt._uuid}>
-              <DraggableCard
-                option={opt}
-                index={i}
-                onSelect={(option) => handleOption(option)}
-                dropZoneY={dropY}
-              />
-            </React.Fragment>
-          ))}
-        </CardsRow>
-        <ContainerEffects>
-          {optionsWithIds.map((opt, i) => (
-            <EffectRow key={opt._uuid}>
-              {(opt._icons || []).map((icon, j) => (
-                <EffectIcon key={j}>{icon}</EffectIcon>
-              ))}
-            </EffectRow>
-          ))}
-        </ContainerEffects>
-
+        <Animated.View style={[cardsAnimatedStyle]}>
+          <CardsRow>
+            {optionsWithIds.map((opt, i) => (
+              <React.Fragment key={opt._uuid}>
+                <DraggableCard
+                  option={opt}
+                  index={i}
+                  onSelect={(option) => handleOption(option)}
+                  dropZoneY={dropY}
+                />
+              </React.Fragment>
+            ))}
+          </CardsRow>
+        </Animated.View>
+        <Animated.View style={[cardsAnimatedStyle]}>
+          <ContainerEffects>
+            {optionsWithIds.map((opt, i) => (
+              <EffectRow key={opt._uuid}>
+                {(opt._icons || []).map((icon, j) => (
+                  <EffectIcon key={j}>{icon}</EffectIcon>
+                ))}
+              </EffectRow>
+            ))}
+          </ContainerEffects>
+        </Animated.View>
+        <TouchableOpacity
+          onPress={() => {
+            cardsOpacity.value = withTiming(cardsVisible ? 0 : 1, {
+              duration: 400,
+            });
+            setCardsVisible(!cardsVisible);
+          }}
+          style={{
+            position: "absolute",
+            top: 530,
+            left: 10,
+            zIndex: 1000,
+          }}
+        >
+          <Image
+            source={btnToggleCards}
+            style={{ width: 48, height: 48 }}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
         {particleCoords && (
           <ParticleExplosion x={particleCoords.x} y={particleCoords.y} />
         )}
@@ -339,7 +370,7 @@ const Title = styled.Text`
 
 const CardsRow = styled.View`
   position: absolute;
-  top: 260;
+  top: 280;
   width: 100%;
   flex-direction: row;
   justify-content: space-evenly;

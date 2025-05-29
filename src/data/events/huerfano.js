@@ -380,12 +380,6 @@ export const reformatorio_patio_1 = {
 
   options: [
     {
-      text: "Buscar a Lia",
-      text_en: "Look for Lia",
-      condition: { etiquetasIncluye: ["conecta_con_lia"] },
-      next: "reformatorio_lia_1",
-    },
-    {
       text: "Volver",
       text_en: "Return",
       next: "reformatorio_exploracion_retorno",
@@ -398,7 +392,7 @@ export const reformatorio_patio_1 = {
       "reformatorio_patio_pozo",
       "reformatorio_patio_cerca",
     ],
-    max: 1,
+    max: 2,
   },
 };
 
@@ -421,12 +415,13 @@ export const reformatorio_patio_chico_entrada = {
       text: "Acercarte en silencio",
       text_en: "Approach quietly",
       condition: { etiquetasExcluye: ["evitado_por_chico"] },
+      etiquetas: ["conocio_chico_solo"],
       next: "reformatorio_patio_chico_solo",
     },
     {
       text: "Alejarte sin hacer ruido",
       text_en: "Step away quietly",
-      next: "reformatorio_exploracion_retorno",
+      next: "reformatorio_patio_1",
     },
   ],
 };
@@ -437,7 +432,7 @@ export const reformatorio_patio_chico_solo = {
   text: "El chico te mira de reojo. Tarda en hablar.\n\n—¿Vos también te acordás de sus voces? —dice de golpe.\n\nNo explica más. Vuelve a mirar la tierra.",
   text_en:
     "The boy glances at you. Takes a while to speak.\n\n“Do you hear their voices too?” he says suddenly.\n\nHe doesn’t explain. Just looks back down at the dirt.",
- background: require("../../../assets/backgrounds/huerfano/chico_solo.png"),
+  background: require("../../../assets/backgrounds/huerfano/chico_solo.png"),
   options: [
     {
       text: "Quedarte en silencio",
@@ -483,7 +478,7 @@ export const reformatorio_patio_chico_solo_2 = {
     {
       text: "Alejarte en silencio",
       text_en: "Step away in silence",
-      next: "reformatorio_exploracion_retorno",
+      next: "reformatorio_patio_1",
     },
   ],
 };
@@ -500,7 +495,7 @@ export const reformatorio_patio_chico_solo_lia = {
       text: "Asentir y alejarte",
       text_en: "Nod and walk away",
       etiquetas: ["chico_solo_lia"],
-      next: "reformatorio_exploracion_retorno",
+      next: "reformatorio_patio_1",
     },
     {
       text: "Dudar... insitir en preguntar",
@@ -522,7 +517,7 @@ export const reformatorio_patio_chico_solo_insiste = {
     {
       text: "Irte finalmente",
       text_en: "Finally walk away",
-      next: "reformatorio_exploracion_retorno",
+      next: "reformatorio_patio_1",
     },
   ],
 };
@@ -537,7 +532,7 @@ export const reformatorio_patio_chico_solo_silencio = {
     {
       text: "Levantarte en silencio",
       text_en: "Get up quietly",
-      next: "reformatorio_exploracion_retorno",
+      next: "reformatorio_patio_1",
     },
   ],
 };
@@ -552,38 +547,19 @@ export const reformatorio_patio_chico_solo_evitar = {
     {
       text: "Dejarlo en paz",
       text_en: "Leave him be",
-      next: "reformatorio_exploracion_retorno",
+      next: "reformatorio_patio_1",
     },
   ],
 };
 
-//--- PATIO POZO
-export const reformatorio_patio_pozo = {
-  id: "reformatorio_patio_pozo",
-  title: "El pozo cerrado",
-  text: "Te asomás al borde. El candado parece viejo, pero resistente. Escuchás un leve goteo abajo.\n\nPodrías intentar forzarlo... si nadie mira.",
-  text_en:
-    "You lean over the edge. The lock looks old but strong. You hear faint dripping below.\n\nYou could try to force it... if no one is watching.",
-  special: "roll_dado",
-  check: 5,
-  successNext: "reformatorio_patio_pozo_abierto",
-  failNext: "reformatorio_patio_pozo_falla",
-  options: [
-    {
-      text: "No arriesgarse",
-      text_en: "Don't risk it",
-      condition: { etiquetasIncluye: ["obediente", "inseguro"] },
-      next: "reformatorio_exploracion_retorno",
-    },
-  ],
-};
-
+//---- PARTIO CERCA
 export const reformatorio_patio_cerca = {
   id: "reformatorio_patio_cerca",
   title: "La cerca vieja",
   text: "Entre dos tablas, notás algo tallado con cuidado: una espiral incompleta, igual a la de tu insignia.\n\nParece hecho hace mucho.",
   text_en:
     "Between two boards, you notice a carefully carved shape: an incomplete spiral, just like the one on your badge.\n\nLooks old.",
+  background: require("../../../assets/backgrounds/huerfano/patio_cerca_lia.png"),
   options: [
     {
       text: "Tocar el símbolo",
@@ -593,13 +569,217 @@ export const reformatorio_patio_cerca = {
     {
       text: "Analizar el patrón",
       text_en: "Analyze the pattern",
-      condition: { etiquetasIncluye: ["analítico", "curioso"] },
+      condition: { etiquetasIncluye: ["curioso"] },
       next: "reformatorio_patio_cerca_analisis",
     },
     {
       text: "Alejarte sin hacer ruido",
       text_en: "Step away silently",
-      next: "reformatorio_exploracion_retorno",
+      next: "reformatorio_patio_1",
+    },
+  ],
+};
+
+export const reformatorio_patio_cerca_tacto = {
+  id: "reformatorio_patio_cerca_tacto",
+  title: "Huella persistente",
+  text: "La madera está áspera, pero el grabado tiene una hendidura suave, como si muchas manos lo hubieran tocado antes.\n\nPor un momento, sentís un leve cosquilleo en la palma. Nada más.",
+  text_en:
+    "The wood is rough, but the carving feels smooth—like many hands touched it before.\n\nFor a moment, there's a faint tingle in your palm. Nothing more.",
+  options: [
+    {
+      text: "Alejarte en silencio",
+      text_en: "Step away silently",
+      etiquetas: ["exploro_cerca"],
+      next: "reformatorio_patio_cerca",
+    },
+  ],
+};
+
+export const reformatorio_patio_cerca_analisis = {
+  id: "reformatorio_patio_cerca_analisis",
+  title: "Grabados y nombres",
+  text: 'Alrededor del símbolo hay más marcas: letras, rayas, nombres casi borrados.\n\nUno resalta entre los demás: "Tamar". Otro, apenas visible, parece ser "Lia".\n\nNo sabés quiénes fueron, pero alguien quiso que quedaran ahí.',
+  text_en:
+    "Around the symbol are more carvings: lines, faded letters, names.\n\nOne stands out: 'Tamar'. Another, barely visible, might be 'Lia'.\n\nYou don’t know who they were, but someone wanted them remembered.",
+  options: [
+    {
+      text: "Dejar el lugar en silencio",
+      text_en: "Leave quietly",
+      etiquetas: ["exploro_cerca"],
+      next: "reformatorio_patio_cerca",
+    },
+  ],
+};
+
+//--- PATIO POZO
+export const reformatorio_patio_pozo = {
+  id: "reformatorio_patio_pozo",
+  title: "El pozo cerrado",
+  text: "Cerca de la pared norte hay un pozo de piedra cubierto por una tapa metálica. De las rendijas se escapa un olor húmedo, algo podrido.\n\nNo parece que nadie se acerque nunca.",
+  background: require("../../../assets/backgrounds/huerfano/pozo.png"),
+  options: [
+    {
+      text: "Intentar abrir la tapa",
+      text_en: "Try to open the lid",
+      special: "roll_dado",
+      roll: {
+        stat: "fuerza",
+        dificultad: 6,
+        bonus: 0,
+        onSuccess: "reformatorio_pozo_abierto",
+        onFail: "reformatorio_pozo_castigo",
+      },
+    },
+    {
+      text: "Olisquear el aire",
+      text_en: "Sniff the air",
+      next: "reformatorio_pozo_olor",
+    },
+    {
+      text: "Alejarte sin hacer ruido",
+      text_en: "Walk away silently",
+      etiquetas: ["evito_pozo"],
+      next: "reformatorio_patio_1",
+    },
+  ],
+};
+
+export const reformatorio_pozo_abierto = {
+  id: "reformatorio_pozo_abierto",
+  title: "Pozo abierto",
+  text: "Con esfuerzo, lográs mover la tapa lo suficiente como para ver el interior. Un tubo de piedra desciende hacia la oscuridad.\n\nSale un olor aún más fuerte. Podrido. Antinatural.\n\nNo ves el fondo. Pero algo… algo se mueve allá abajo.",
+  etiquetas: ["pozo_abierto"],
+  options: [
+    {
+      text: "Cerrar la tapa y alejarte",
+      text_en: "Close the lid and step away",
+      next: "reformatorio_patio_1",
+    },
+  ],
+};
+
+export const reformatorio_pozo_castigo = {
+  id: "reformatorio_pozo_castigo",
+  title: "Descubierto",
+  text: "La tapa cruje fuerte. Antes de que puedas reaccionar, una voz grita tu nombre. Un instructor se acerca furioso.\n\n—¿Jugando con las cloacas? Vas directo al cuarto de castigo.",
+  etiquetas: ["castigado_pozo"],
+   options: [
+    {
+      text: "Avanzar",
+      text_en: "Advance",
+      next: "reformatorio_castigo_1",
+    },
+  ],
+};
+
+export const reformatorio_pozo_olor = {
+  id: "reformatorio_pozo_olor",
+  title: "Hedor persistente",
+  text: "Te inclinás apenas sobre la tapa. Un olor agrio, húmedo, como carne estancada te revuelve el estómago.\n\nAlgo allá abajo... no debería estar ahí.\n\nPor instinto, das un paso atrás.",
+  etiquetas: ["inquieto_pozo"],
+  options: [
+    {
+      text: "Alejarte",
+      next: "reformatorio_patio_1",
+    },
+  ],
+};
+
+//------ CASTIGO POZO
+export const reformatorio_castigo_1 = {
+  id: "reformatorio_castigo_1",
+  title: "El cuarto sin ventanas",
+  text: "Te encierran en una habitación oscura con paredes frías y húmedas. No hay ventanas. Solo una antorcha que parpadea desde arriba.\n\nNo sabés cuánto tiempo pasa. El silencio es tan denso que empezás a escuchar tus propios pensamientos como gritos.",
+  background: require("../../../assets/backgrounds/huerfano/cuarto_castigo.png"),
+  options: [
+    {
+      text: "Esperar en silencio",
+      text_en: "Wait in silence",
+      etiquetas: ["castigo_reflexion"],
+      next: "reformatorio_castigo_2",
+    },
+    {
+      text: "Golpear la puerta",
+      text_en: "Bang on the door",
+      etiquetas: ["castigo_rebelde"],
+      next: "reformatorio_castigo_2",
+    },
+  ],
+};
+
+export const reformatorio_castigo_2 = {
+  id: "reformatorio_castigo_2",
+  title: "El tiempo se diluye",
+  text: "El cuarto está en penumbras. No sabés cuánto tiempo pasó. Empezás a buscar con las manos. La pared de piedra está fría, rugosa... pero hay una parte distinta: suave, marcada. Alguien talló algo.\n\n*“No me olvides. —T”*\n\nUn poco más abajo, otra frase: *“La verdad está abajo.”*",
+  background: require("../../../assets/backgrounds/huerfano/cuarto_castigo2.png"),
+  etiquetas: ["mensaje_castigo", "empieza_busqueda", "conexion_tamar"],
+  options: [
+    {
+      text: "Seguir esperando en silencio",
+      text_en: "Keep waiting in silence",
+      next: "reformatorio_castigo_3",
+    },
+    {
+      text: "Golpear la puerta",
+      text_en: "Bang on the door",
+      etiquetas: ["castigo_rebelde"],
+      next: "reformatorio_castigo_3",
+    },
+  ],
+};
+
+export const reformatorio_castigo_3 = {
+  id: "reformatorio_castigo_3",
+  title: "Susurros tras la pared",
+  title_en: "Whispers through the wall",
+  text: "En algún momento, entre el hambre, el frío y el temblor en los dedos, escuchás algo. Primero pasos. Luego un roce, metálico, en la cerradura. Finalmente, una voz baja, apenas un susurro:\n\n—¿Estás ahí? No hagas ruido. Vine a sacarte.\n\nSuena joven. Y temerosa. Como si también ella se jugara algo al estar ahí.",
+  text_en: "At some point, between hunger, cold, and your trembling fingers, you hear something. First, footsteps. Then a metallic scrape at the lock. Finally, a low voice, barely a whisper:\n\n—Are you there? Don’t make a sound. I came to get you out.\n\nShe sounds young. And scared. Like she’s risking something too.",
+  background: require("../../../assets/backgrounds/huerfano/cuarto_castigo2.png"),
+  options: [
+    {
+      text: "Confiar en la voz y salir",
+      text_en: "Trust the voice and leave",
+      etiquetas: ["rescatado_por_lia", "confianza_lia", "lia_conocida_fuera_biblioteca", "conocio_lia"],
+      next: "reformatorio_castigo_escape",
+    },
+    {
+      text: "No moverte. Podría ser una trampa",
+      text_en: "Stay still. It might be a trap",
+      effects: { salud: -3 },
+      etiquetas: ["no_confia_en_lia", "no_conocio_lia"],
+      next: "reformatorio_castigo_encierro",
+    },
+  ],
+};
+
+export const reformatorio_castigo_encierro = {
+  id: "reformatorio_castigo_encierro",
+  title: "Castigo cumplido",
+  title_en: "Punishment served",
+  text: "Horas más tarde—¿o días?—alguien abre la puerta. La luz te enceguece por un segundo.\n\nUn guardia te agarra del brazo sin decir palabra y te arrastra afuera. Justo antes de soltarte, murmura entre dientes:\n\n—Más te vale no volver a intentar algo así.",
+  text_en: "Hours later—or maybe days?—someone opens the door. The light blinds you for a moment.\n\nA guard grabs you by the arm and drags you out. Just before letting go, he mutters:\n\n—You’d better not try something like that again.",
+  options: [
+    {
+      text: "Volver al patio",
+      text_en: "Return to the yard",
+      next: "reformatorio_patio_1",
+    },
+  ],
+};
+
+export const reformatorio_castigo_escape = {
+  id: "reformatorio_castigo_escape",
+  title: "La mano en la oscuridad",
+  title_en: "The hand in the dark",
+  text: "La cerradura gira. La puerta se abre apenas. Una mano delgada se asoma y te ofrece ayuda. Dudás un instante, pero la tomás.\n\nLa figura que te guía por el pasillo es alta, pálida, con los ojos muy abiertos y los brazos marcados por heridas y signos de desnutrición. Parece mayor que vos. No dice nada, solo camina rápido, con pasos silenciosos y urgentes.",
+  text_en: "The lock turns. The door opens slightly. A thin hand reaches in to help you. You hesitate, then take it.\n\nThe figure leading you through the corridor is tall, pale, with wide eyes and arms marked by wounds and signs of malnutrition. She seems older than you. She doesn’t speak, just walks quickly, with silent and urgent steps.",
+  background: require("../../../assets/backgrounds/huerfano/castigo_escape.png"),
+  options: [
+    {
+      text: "Seguirla",
+      text_en: "Follow her",
+      next: "reformatorio_sala_secreta_lia",
     },
   ],
 };

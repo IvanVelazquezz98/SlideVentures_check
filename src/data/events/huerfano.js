@@ -622,10 +622,11 @@ export const reformatorio_patio_pozo = {
     {
       text: "Intentar abrir la tapa",
       text_en: "Try to open the lid",
+      condition: { etiquetasExcluye: ["castigo_cumplido"] },
       special: "roll_dado",
       roll: {
         stat: "fuerza",
-        dificultad: 6,
+        dificultad: 3,
         bonus: 0,
         onSuccess: "reformatorio_pozo_abierto",
         onFail: "reformatorio_pozo_castigo",
@@ -681,7 +682,7 @@ export const reformatorio_pozo_olor = {
   options: [
     {
       text: "Alejarte",
-      next: "reformatorio_patio_1",
+      next: "reformatorio_patio_pozo",
     },
   ],
 };
@@ -740,14 +741,14 @@ export const reformatorio_castigo_3 = {
     {
       text: "Confiar en la voz y salir",
       text_en: "Trust the voice and leave",
-      etiquetas: ["rescatado_por_lia", "confianza_lia", "lia_conocida_fuera_biblioteca", "conocio_lia"],
+      etiquetas: ["rescatado_por_lia", "confianza_lia", "lia_conocida_fuera_biblioteca", "conocio_lia", "castigo_cumplido"],
       next: "reformatorio_castigo_escape",
     },
     {
       text: "No moverte. Podría ser una trampa",
       text_en: "Stay still. It might be a trap",
       effects: { salud: -3 },
-      etiquetas: ["no_confia_en_lia", "no_conocio_lia"],
+      etiquetas: ["no_confia_en_lia", "no_conocio_lia", "castigo_cumplido"],
       next: "reformatorio_castigo_encierro",
     },
   ],

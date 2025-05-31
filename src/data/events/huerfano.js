@@ -333,7 +333,7 @@ export const reformatorio_exploracion_intro = {
     {
       text: "Explorar la biblioteca",
       text_en: "Explore the library",
-      next: "reformatorio_biblioteca_1",
+      next: "reformatorio_biblioteca_entrada",
     },
     {
       text: "Caminar por los pasillos vacíos",
@@ -359,11 +359,123 @@ export const reformatorio_exploracion_retorno = {
     {
       text: "Explorar la biblioteca",
       text_en: "Explore the library",
-      next: "reformatorio_biblioteca_1",
+      next: "reformatorio_biblioteca_entrada",
     },
     {
       text: "Caminar por los pasillos vacíos",
       text_en: "Walk the empty hallways",
+      next: "reformatorio_pasillos_1",
+    },
+  ],
+};
+
+//--- PASILLOS
+export const reformatorio_pasillos_1 = {
+  id: "reformatorio_pasillos_1",
+  title: "Sombras en las paredes",
+  title_en: "Shadows on the walls",
+  text: "Los pasillos del reformatorio son largos y sombríos. La piedra está agrietada y ennegrecida.\n\nUn grupo de chicos pasa guiado por un guardia. Uno deja caer un papel.\n\nMás adelante, una puerta con símbolos brilla débilmente. En la pared, un mural muestra niños vendados bajo un sol roto.",
+  text_en:
+    "The reformatorio’s hallways are long and shadowy. The stone is cracked and blackened.\n\nA group of children walks by, led by a guard. One drops a paper.\n\nAhead, a symbol-covered door glows faintly. On the wall, a mural shows blindfolded kids under a broken sun.",
+  background: require("../../../assets/backgrounds/huerfano/pasillos.png"),
+  avatar: huerfanoAvatar,
+  options: [
+    {
+      text: "Levantar el papel",
+      text_en: "Pick up the paper",
+      next: "reformatorio_pasillos_papel",
+      condition: { etiquetasExcluye: ["vio_s13", "vio_mural"] },
+    },
+    {
+      text: "Observar la puerta con símbolos",
+      text_en: "Observe the door with symbols",
+      next: "reformatorio_pasillos_puerta",
+    },
+    {
+      text: "Examinar el mural",
+      text_en: "Examine the mural",
+      next: "reformatorio_pasillos_mural",
+    },
+    {
+      text: "Volver a explorar otra zona",
+      text_en: "Go explore elsewhere",
+      next: "reformatorio_exploracion_retorno",
+      condition: { etiquetasIncluye: ["vio_mural"] },
+    },
+  ],
+};
+
+export const reformatorio_pasillos_papel = {
+  id: "reformatorio_pasillos_papel",
+  title: "Un papel arrugado",
+  title_en: "A crumpled paper",
+  text: "Te agachás y lo abrís rápido, antes de que el guardia te vea. Es un pedazo de hoja rota, con un símbolo que reconocés: la espiral incompleta.\n\nPero hay algo más. Letras mal escritas, como con miedo: *'S13 - subterráneo'*.\n\nAntes de poder pensar mucho más, escuchás pasos acercándose.",
+  text_en:
+    "You crouch and quickly open it before the guard notices. It’s a torn sheet, with a symbol you recognize: the incomplete spiral.\n\nBut there’s more. Shaky writing: *'S13 - underground'*.\n\nBefore you can think further, footsteps approach.",
+  background: require("../../../assets/backgrounds/huerfano/papel_s13.png"),
+  options: [
+    {
+      text: "Esconder el papel y seguir caminando",
+      text_en: "Hide the paper and keep walking",
+      etiquetas: ["vio_s13", "tiene_papel_espiral"],
+      next: "reformatorio_exploracion_retorno",
+    },
+  ],
+};
+
+export const reformatorio_pasillos_puerta = {
+  id: "reformatorio_pasillos_puerta",
+  title: "La puerta sin nombre",
+  title_en: "The door with no name",
+  text: "La madera está firme. Tiene un picaporte simple y varios símbolos tallados: una espiral con una marca encima, una mano con un rombo y dos triángulos invertidos.\n\nEl aire se siente más denso al acercarte.",
+  text_en:
+    "The wood is sturdy. There's a simple handle and several carved symbols: a spiral with a mark above, a hand with a diamond, and two inverted triangles.\n\nThe air feels heavier as you get closer.",
+  background: require("../../../assets/backgrounds/huerfano/pasillo_puerta.png"),
+  options: [
+    {
+      text: "Tocar el marco",
+      text_en: "Touch the frame",
+      etiquetas: ["toco_puerta_simbolos"],
+      next: "reformatorio_pasillos_puerta_tacto",
+    },
+    {
+      text: "Alejarte en silencio",
+      text_en: "Step away silently",
+      next: "reformatorio_pasillos_1",
+    },
+  ],
+};
+
+export const reformatorio_pasillos_puerta_tacto = {
+  id: "reformatorio_pasillos_puerta_tacto",
+  title: "Eco interior",
+  title_en: "Inner echo",
+  text: "Apenas la tocás, un cosquilleo te recorre los dedos. Por un segundo, escuchás un murmullo dentro de tu cabeza: no en palabras, sino en emoción. Pánico. Urgencia.\n\nLa puerta no se abre. Pero algo en vos quedó distinto.",
+  text_en:
+    "As soon as you touch it, a tingle crawls through your fingers. For a moment, you hear a whisper—not in words, but in emotion. Panic. Urgency.\n\nThe door doesn’t open. But something in you feels different.",
+  options: [
+    {
+      text: "Alejarte lentamente",
+      text_en: "Back away slowly",
+      etiquetas: ["escucho_mensaje_simbolico"],
+      next: "reformatorio_pasillos_1",
+    },
+  ],
+};
+
+export const reformatorio_pasillos_mural = {
+  id: "reformatorio_pasillos_mural",
+  title: "Lo que dejaron atrás",
+  title_en: "What they left behind",
+  text: "El mural parece antiguo. Casi borrado. Muestra figuras pequeñas, niños con vendas en los ojos, caminando hacia un abismo. Arriba, un sol negro se parte en dos.\n\nEn una esquina, un niño se da vuelta. Es el único con ojos abiertos. Y a su lado, hay una espiral incompleta dibujada a mano, fuera del diseño original.",
+  text_en:
+    "The mural looks old. Almost gone. It shows small figures—blindfolded children walking toward an abyss. Above, a black sun splits in two.\n\nIn one corner, a child turns around. He’s the only one with open eyes. Next to him, someone has hand-drawn an incomplete spiral—outside the original design.",
+  background: require("../../../assets/backgrounds/huerfano/pasillo_mural.png"),
+  etiquetas: ["vio_mural"],
+  options: [
+    {
+      text: "Alejarte del mural",
+      text_en: "Walk away from the mural",
       next: "reformatorio_pasillos_1",
     },
   ],
@@ -396,7 +508,8 @@ export const reformatorio_patio_1 = {
   },
 };
 
-//---- PATIO CHICO SOLO
+//===== EVENTOS CHICO SOLO =====
+
 export const reformatorio_patio_chico_entrada = {
   id: "reformatorio_patio_chico_entrada",
   title: "Una figura sola",
@@ -551,6 +664,7 @@ export const reformatorio_patio_chico_solo_evitar = {
     },
   ],
 };
+/* --- Fin bloque ocultable --- */
 
 //---- PARTIO CERCA
 export const reformatorio_patio_cerca = {
@@ -602,6 +716,7 @@ export const reformatorio_patio_cerca_analisis = {
   text: 'Alrededor del símbolo hay más marcas: letras, rayas, nombres casi borrados.\n\nUno resalta entre los demás: "Tamar". Otro, apenas visible, parece ser "Lia".\n\nNo sabés quiénes fueron, pero alguien quiso que quedaran ahí.',
   text_en:
     "Around the symbol are more carvings: lines, faded letters, names.\n\nOne stands out: 'Tamar'. Another, barely visible, might be 'Lia'.\n\nYou don’t know who they were, but someone wanted them remembered.",
+  etiquetas: ["conexion_tamar"],
   options: [
     {
       text: "Dejar el lugar en silencio",
@@ -665,7 +780,7 @@ export const reformatorio_pozo_castigo = {
   title: "Descubierto",
   text: "La tapa cruje fuerte. Antes de que puedas reaccionar, una voz grita tu nombre. Un instructor se acerca furioso.\n\n—¿Jugando con las cloacas? Vas directo al cuarto de castigo.",
   etiquetas: ["castigado_pozo"],
-   options: [
+  options: [
     {
       text: "Avanzar",
       text_en: "Advance",
@@ -735,13 +850,20 @@ export const reformatorio_castigo_3 = {
   title: "Susurros tras la pared",
   title_en: "Whispers through the wall",
   text: "En algún momento, entre el hambre, el frío y el temblor en los dedos, escuchás algo. Primero pasos. Luego un roce, metálico, en la cerradura. Finalmente, una voz baja, apenas un susurro:\n\n—¿Estás ahí? No hagas ruido. Vine a sacarte.\n\nSuena joven. Y temerosa. Como si también ella se jugara algo al estar ahí.",
-  text_en: "At some point, between hunger, cold, and your trembling fingers, you hear something. First, footsteps. Then a metallic scrape at the lock. Finally, a low voice, barely a whisper:\n\n—Are you there? Don’t make a sound. I came to get you out.\n\nShe sounds young. And scared. Like she’s risking something too.",
+  text_en:
+    "At some point, between hunger, cold, and your trembling fingers, you hear something. First, footsteps. Then a metallic scrape at the lock. Finally, a low voice, barely a whisper:\n\n—Are you there? Don’t make a sound. I came to get you out.\n\nShe sounds young. And scared. Like she’s risking something too.",
   background: require("../../../assets/backgrounds/huerfano/cuarto_castigo2.png"),
   options: [
     {
       text: "Confiar en la voz y salir",
       text_en: "Trust the voice and leave",
-      etiquetas: ["rescatado_por_lia", "confianza_lia", "lia_conocida_fuera_biblioteca", "conocio_lia", "castigo_cumplido"],
+      etiquetas: [
+        "rescatado_por_lia",
+        "confianza_lia",
+        "lia_conocida_fuera_biblioteca",
+        "conocio_lia",
+        "castigo_cumplido",
+      ],
       next: "reformatorio_castigo_escape",
     },
     {
@@ -759,7 +881,8 @@ export const reformatorio_castigo_encierro = {
   title: "Castigo cumplido",
   title_en: "Punishment served",
   text: "Horas más tarde—¿o días?—alguien abre la puerta. La luz te enceguece por un segundo.\n\nUn guardia te agarra del brazo sin decir palabra y te arrastra afuera. Justo antes de soltarte, murmura entre dientes:\n\n—Más te vale no volver a intentar algo así.",
-  text_en: "Hours later—or maybe days?—someone opens the door. The light blinds you for a moment.\n\nA guard grabs you by the arm and drags you out. Just before letting go, he mutters:\n\n—You’d better not try something like that again.",
+  text_en:
+    "Hours later—or maybe days?—someone opens the door. The light blinds you for a moment.\n\nA guard grabs you by the arm and drags you out. Just before letting go, he mutters:\n\n—You’d better not try something like that again.",
   options: [
     {
       text: "Volver al patio",
@@ -773,14 +896,249 @@ export const reformatorio_castigo_escape = {
   id: "reformatorio_castigo_escape",
   title: "La mano en la oscuridad",
   title_en: "The hand in the dark",
-  text: "La cerradura gira. La puerta se abre apenas. Una mano delgada se asoma y te ofrece ayuda. Dudás un instante, pero la tomás.\n\nLa figura que te guía por el pasillo es alta, pálida, con los ojos muy abiertos y los brazos marcados por heridas y signos de desnutrición. Parece mayor que vos. No dice nada, solo camina rápido, con pasos silenciosos y urgentes.",
-  text_en: "The lock turns. The door opens slightly. A thin hand reaches in to help you. You hesitate, then take it.\n\nThe figure leading you through the corridor is tall, pale, with wide eyes and arms marked by wounds and signs of malnutrition. She seems older than you. She doesn’t speak, just walks quickly, with silent and urgent steps.",
+  text: "La cerradura gira. La puerta se abre apenas. Una mano delgada se asoma y te ofrece ayuda. Dudás un instante, pero la tomás.\n\nLa figura que te guía por el pasillo es alta, pálida, con los ojos muy abiertos y los brazos marcados por heridas y signos de desnutrición. Parece mayor que vos.\n\nAntes de seguir caminando, te susurra:\n\n—No digas nada. Confía en mí. Después… te voy a mostrar algo que importa.",
+  text_en:
+    "The lock turns. The door opens slightly. A thin hand reaches in to help you. You hesitate, then take it.\n\nThe figure leading you down the corridor is tall, pale, with wide eyes and arms marked by wounds and malnutrition. She seems older than you.\n\nBefore continuing, she whispers:\n\n“Don’t say a word. Trust me. I’ll show you something that matters.”",
   background: require("../../../assets/backgrounds/huerfano/castigo_escape.png"),
   options: [
     {
       text: "Seguirla",
       text_en: "Follow her",
-      next: "reformatorio_sala_secreta_lia",
+      next: "reformatorio_biblioteca_s13_oculta",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_s13_oculta = {
+  id: "reformatorio_biblioteca_s13_oculta",
+  title: "Pasillo S13",
+  title_en: "Corridor S13",
+  text: "Te guía en silencio por la biblioteca hasta un rincón olvidado. Detrás de una estantería ladeada, hay una trampilla con una marca: *S13*.\n\n—Bajá rápido —susurra—. Nadie viene acá.\n\nEl lugar es pequeño, húmedo. Sobre la mesa hay símbolos, páginas sueltas y trazos en espiral. La figura no dice nada. Solo espera.",
+  text_en:
+    "She guides you silently through a forgotten corner of the library. Behind a tilted shelf, a trapdoor is marked: *S13*.\n\n“Down. Quick,” she whispers. “No one comes here.”\n\nThe room is small and damp. On the table: symbols, loose pages, spiral marks. She says nothing. Just waits.",
+  etiquetas: ["conecta_con_lia", "lia_conocida_fuera_biblioteca", "vio_s13"],
+  options: [
+    {
+      text: "Observar en silencio",
+      text_en: "Observe silently",
+      next: "reformatorio_biblioteca_reunion_lia_convergencia",
+    },
+  ],
+
+};
+//------ BLIBLIOTECA
+
+export const reformatorio_biblioteca_entrada = {
+  id: "reformatorio_biblioteca_entrada",
+  title: "La biblioteca en sombras",
+  title_en: "The shadowed library",
+  text: "La biblioteca es fría, silenciosa. Huele a papel viejo y piedra húmeda. Filas de estanterías cubren las paredes, llenas de libros maltratados y códigos polvorientos.\n\nUna mesa al fondo parece haber sido usada hace poco.",
+  text_en:
+    "The library is cold and silent. It smells of old paper and damp stone. Rows of shelves cover the walls, filled with worn books and dusty codes.\n\nA table at the back seems to have been used recently.",
+  options: [
+    {
+      text: "Explorar los estantes",
+      text_en: "Explore the shelves",
+      next: "reformatorio_biblioteca_estantes",
+    },
+    {
+      text: "Acercarte a la mesa del fondo",
+      text_en: "Approach the back table",
+      condition: { etiquetasExcluye: ["conocio_lia"] },
+      next: "reformatorio_biblioteca_mesa",
+    },
+    {
+      text: "Volver a explorar otra zona",
+      text_en: "Go explore elsewhere",
+      next: "reformatorio_exploracion_retorno",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_mesa = {
+  id: "reformatorio_biblioteca_mesa",
+  title: "Ecos recientes",
+  title_en: "Recent traces",
+  text: "Sobre la mesa hay marcas de tinta fresca, un cuaderno abierto con símbolos desconocidos y una vela gastada.\n\nSentís que alguien ha estado estudiando aquí. Justo cuando estás por irte, una voz te habla desde entre los estantes...",
+  text_en:
+    "On the table, there are marks of fresh ink, an open notebook filled with unknown symbols, and a spent candle.\n\nYou feel someone has been studying here. Just as you're about to leave, a voice speaks to you from between the shelves...",
+  options: [
+    {
+      text: "Volver la mirada",
+      text_en: "Turn around",
+      condition: { etiquetasExcluye: ["conocio_lia"] },
+      next: "reformatorio_biblioteca_aparicion",
+    },
+    {
+      text: "Volver la mirada",
+      text_en: "Turn around",
+      condition: { etiquetasIncluye: ["conocio_lia"] },
+      next: "reformatorio_biblioteca_reunion_lia_convergencia",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_aparicion = {
+  id: "reformatorio_biblioteca_aparicion",
+  title: "Entre los estantes",
+  title_en: "Between the shelves",
+  text: "Una figura delgada se desliza entre las sombras de los estantes. La vela sobre la mesa parpadea. Te ponés tenso, pero la voz que escuchás es suave.\n\n—No toques nada sin saber lo que es —dice.\n\nLa chica se acerca. No parece asustada. Tampoco amable. Solo... atenta.",
+  text_en:
+    "A slim figure moves between the shadows of the shelves. The candle on the table flickers. You tense up, but the voice you hear is soft.\n\n“Don’t touch anything unless you know what it is,” she says.\n\nThe girl approaches. She doesn’t seem scared. Or friendly. Just... focused.",
+  etiquetas: ["conecta_con_lia", "conocio_lia", "conocio_lia_por_biblioteca"],
+  options: [
+    {
+      text: "Seguirla",
+      text_en: "Follow her",
+      next: "reformatorio_biblioteca_reunion_lia_convergencia",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_reunion_lia_convergencia = {
+  id: "reformatorio_biblioteca_reunion_lia_convergencia",
+  title: "Lo que no enseñan",
+  title_en: "What they don't teach",
+  text: "Se sienta frente a vos en silencio. Entre ambos, un libro abierto: símbolos deformes, espirales, palabras tachadas.\n\nTe observa, como evaluando si puede confiar en vos. Finalmente habla, en voz baja:\n\n—Nadie más debería ver esto.",
+  text_en:
+    "She sits across from you in silence. Between you, an open book: warped symbols, spirals, crossed-out words.\n\nShe watches you, as if weighing whether she can trust you. Finally, she speaks, quietly:\n\n“No one else should see this.”",
+  etiquetas: ["conocio_lia"],
+  options: [
+    {
+      text: "Preguntar su nombre",
+      text_en: "Ask her name",
+      next: "reformatorio_biblioteca_lia_nombre",
+    },
+    {
+      text: "Preguntar qué es este lugar",
+      text_en: "Ask what this place is",
+      next: "reformatorio_biblioteca_s13",
+      condition: { etiquetasExcluye: ["descubrio_s13"] },
+      etiquetas: ["estudia_magia_prohibida"],
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_lia_nombre = {
+  id: "reformatorio_biblioteca_lia_nombre",
+  title: "Un nombre elegido",
+  title_en: "A chosen name",
+  text: "Hace una pausa.\n\n—Me lo puse yo. Lia. El otro ya no importa —dice, sin dramatismo.\n\nTe sostiene la mirada un momento y luego baja la vista.\n\n—Cuando llegué... ya conocía algunos símbolos. A veces no sé si los recuerdo o los inventé.",
+  text_en:
+    "She pauses.\n\n“I chose it. Lia. The other one doesn’t matter,” she says, plainly.\n\nShe holds your gaze for a moment, then looks down.\n\n“When I got here... I already knew some symbols. Sometimes I’m not sure if I remember them or made them up.”",
+  etiquetas: ["nombre_lia_confirmado"],
+  options: [
+    {
+      text: "Preguntar qué es este lugar",
+      text_en: "Ask what this place is",
+      condition: { etiquetasExcluye: ["descubrio_s13"] },
+      etiquetas: ["estudia_magia_prohibida"],
+      next: "reformatorio_biblioteca_s13",
+    },
+    {
+      text: "Preguntar qué es ese libro",
+      text_en: "Ask what the book is",
+      etiquetas: ["estudia_magia_prohibida"],
+      next: "reformatorio_biblioteca_aprendizaje_1",
+    },
+    {
+      text: "Preguntar por Tamar",
+      text_en: "Ask about Tamar",
+      condition: { etiquetasIncluye: ["conexion_tamar"] },
+      etiquetas: ["pregunto_por_tamar"],
+      next: "reformatorio_biblioteca_tamar",
+    },
+  ],
+};
+
+
+export const reformatorio_biblioteca_tamar = {
+  id: "reformatorio_biblioteca_tamar",
+  title: "El que fue primero",
+  title_en: "The one who came first",
+  text: "—Tamar no era como los demás —dice Lia, sin mirarte—. Preguntaba cosas que nadie se animaba a preguntar. Veía símbolos donde nadie más los notaba.\n\nTe muestra un fragmento de página con un dibujo incompleto. Está quemado en los bordes.\n\n—Decían que se volvió loco. Que desapareció. Pero no fue así. Intentó algo... algo que funcionó.\n\nGuarda silencio unos segundos, y baja la voz.\n\n—Y eso fue lo que más les molestó.",
+  text_en:
+    "“Tamar wasn’t like the others,” Lia says, not looking at you. “He asked things no one dared to ask. He saw symbols others ignored.”\n\nShe shows you a torn page fragment with an unfinished drawing. The edges are scorched.\n\n“They said he went mad. That he vanished. But that’s not what happened. He tried something… and it worked.”\n\nShe falls silent for a moment, then lowers her voice.\n\n“And that’s what bothered them the most.”",
+  etiquetas: ["pregunto_por_tamar"],
+  options: [
+    {
+      text: "Preguntar qué es ese libro",
+      text_en: "Ask what the book is",
+      etiquetas: ["estudia_magia_prohibida"],
+      next: "reformatorio_biblioteca_aprendizaje_1",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_s13 = {
+  id: "reformatorio_biblioteca_s13",
+  title: "S13",
+  title_en: "S13",
+  text: "—Esto es S13 —dice en voz baja—. No está en ningún plano. Lo mantienen cerrado, pero no está vacío.\n\nTe muestra símbolos espiralados, algunos tachados, otros borrados a propósito.\n\n—Acá venían los que querían saber más. Tamar vino antes que yo.\n\nTe observa un momento antes de agregar:\n\n—Si llegaste hasta acá, es porque también estás buscando algo.",
+  text_en:
+    "“This is S13,” she says quietly. “It’s not on any map. They keep it locked—but not empty.”\n\nShe shows you spiraling symbols, some crossed out, others deliberately erased.\n\n“Those who wanted to know more came here. Tamar came before me.”\n\nShe watches you for a moment before adding:\n\n“If you made it here, it’s because you’re looking for something too.”",
+  etiquetas: ["descubrio_s13"],
+  options: [
+    {
+      text: "Pedirle que te enseñe",
+      text_en: "Ask her to teach you",
+      etiquetas: ["empieza_aprendizaje_magia"],
+      next: "reformatorio_biblioteca_aprendizaje_1",
+    },
+    {
+      text: "Preguntar su nombre",
+      text_en: "Ask her name",
+      condition: { etiquetasExcluye: ["nombre_lia_confirmado"] },
+      next: "reformatorio_biblioteca_lia_nombre",
+    },
+    {
+      text: "Preguntar por Tamar",
+      text_en: "Ask about Tamar",
+      condition: {
+        etiquetasIncluye: ["conexion_tamar"],
+        etiquetasExcluye: ["pregunto_por_tamar"],
+      },
+      etiquetas: ["pregunto_por_tamar"],
+      next: "reformatorio_biblioteca_tamar",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_aprendizaje_1 = {
+  id: "reformatorio_biblioteca_aprendizaje_1",
+  title: "Primera grieta",
+  title_en: "First crack",
+  text: "Lia pasa una mano por las páginas, luego detiene sus dedos en un símbolo espiralado.\n\n—No es como la magia que enseñan aquí. No es buena ni mala. Pero si no la entiendes, ella te entiende a ti primero.\n\nTe muestra una página. El trazo del símbolo parece moverse sutilmente, como si respirara.\n\n—No se trata de repetir. Se trata de sentir. Vamos a empezar.",
+  text_en:
+    "Lia runs her fingers over the pages, then stops at a spiraling symbol.\n\n“This isn’t like the magic they teach here. It’s not good or bad. But if you don’t understand it, it understands you first.”\n\nShe shows you a page. The symbol’s line seems to shift slightly, as if it were breathing.\n\n“It’s not about repeating. It’s about feeling. Let’s begin.”",
+  etiquetas: ["inicio_aprendizaje_magia_prohibida"],
+  options: [
+    {
+      text: "Continuar",
+      text_en: "Continue",
+      next: "reformatorio_biblioteca_aprendizaje_2",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_estantes = {
+  id: "reformatorio_biblioteca_estantes",
+  title: "Códigos olvidados",
+  title_en: "Forgotten codes",
+  text: "Revisás libros con títulos borrados, hojas arrancadas, páginas con manchas negras. Algunos símbolos se repiten. Sentís que algo en ellos llama tu atención.\n\nUno menciona una palabra tachada: *‘despertar’*.",
+  text_en:
+    "You flip through books with faded titles, torn pages, and black stains. Some symbols repeat across them. Something in them draws your attention.\n\nOne mentions a crossed-out word: *‘awakening’*.",
+  options: [
+    {
+      text: "Anotar los símbolos",
+      text_en: "Note the symbols",
+      etiquetas: ["investiga_magia_prohibida"],
+      next: "reformatorio_biblioteca_solo_estudio",
+    },
+    {
+      text: "Dejar el libro",
+      text_en: "Put the book back",
+      next: "reformatorio_exploracion_retorno",
     },
   ],
 };

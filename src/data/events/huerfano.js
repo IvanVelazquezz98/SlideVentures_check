@@ -917,6 +917,7 @@ export const reformatorio_biblioteca_s13_oculta = {
   text_en:
     "She guides you silently through a forgotten corner of the library. Behind a tilted shelf, a trapdoor is marked: *S13*.\n\n“Down. Quick,” she whispers. “No one comes here.”\n\nThe room is small and damp. On the table: symbols, loose pages, spiral marks. She says nothing. Just waits.",
   etiquetas: ["conecta_con_lia", "lia_conocida_fuera_biblioteca", "vio_s13"],
+  background: require("../../../assets/backgrounds/huerfano/s13_entrada.png"),
   options: [
     {
       text: "Observar en silencio",
@@ -924,7 +925,6 @@ export const reformatorio_biblioteca_s13_oculta = {
       next: "reformatorio_biblioteca_reunion_lia_convergencia",
     },
   ],
-
 };
 //------ BLIBLIOTECA
 
@@ -935,6 +935,7 @@ export const reformatorio_biblioteca_entrada = {
   text: "La biblioteca es fría, silenciosa. Huele a papel viejo y piedra húmeda. Filas de estanterías cubren las paredes, llenas de libros maltratados y códigos polvorientos.\n\nUna mesa al fondo parece haber sido usada hace poco.",
   text_en:
     "The library is cold and silent. It smells of old paper and damp stone. Rows of shelves cover the walls, filled with worn books and dusty codes.\n\nA table at the back seems to have been used recently.",
+  background: require("../../../assets/backgrounds/huerfano/biblioteca_entrada.png"),
   options: [
     {
       text: "Explorar los estantes",
@@ -962,6 +963,7 @@ export const reformatorio_biblioteca_mesa = {
   text: "Sobre la mesa hay marcas de tinta fresca, un cuaderno abierto con símbolos desconocidos y una vela gastada.\n\nSentís que alguien ha estado estudiando aquí. Justo cuando estás por irte, una voz te habla desde entre los estantes...",
   text_en:
     "On the table, there are marks of fresh ink, an open notebook filled with unknown symbols, and a spent candle.\n\nYou feel someone has been studying here. Just as you're about to leave, a voice speaks to you from between the shelves...",
+  background: require("../../../assets/backgrounds/huerfano/biblioteca_mesa.png"),
   options: [
     {
       text: "Volver la mirada",
@@ -986,6 +988,7 @@ export const reformatorio_biblioteca_aparicion = {
   text_en:
     "A slim figure moves between the shadows of the shelves. The candle on the table flickers. You tense up, but the voice you hear is soft.\n\n“Don’t touch anything unless you know what it is,” she says.\n\nThe girl approaches. She doesn’t seem scared. Or friendly. Just... focused.",
   etiquetas: ["conecta_con_lia", "conocio_lia", "conocio_lia_por_biblioteca"],
+  background: require("../../../assets/backgrounds/huerfano/biblioteca_lia.png"),
   options: [
     {
       text: "Seguirla",
@@ -1002,6 +1005,7 @@ export const reformatorio_biblioteca_reunion_lia_convergencia = {
   text: "Se sienta frente a vos en silencio. Entre ambos, un libro abierto: símbolos deformes, espirales, palabras tachadas.\n\nTe observa, como evaluando si puede confiar en vos. Finalmente habla, en voz baja:\n\n—Nadie más debería ver esto.",
   text_en:
     "She sits across from you in silence. Between you, an open book: warped symbols, spirals, crossed-out words.\n\nShe watches you, as if weighing whether she can trust you. Finally, she speaks, quietly:\n\n“No one else should see this.”",
+  background: require("../../../assets/backgrounds/huerfano/lia_convergencia.png"),
   etiquetas: ["conocio_lia"],
   options: [
     {
@@ -1050,7 +1054,6 @@ export const reformatorio_biblioteca_lia_nombre = {
     },
   ],
 };
-
 
 export const reformatorio_biblioteca_tamar = {
   id: "reformatorio_biblioteca_tamar",
@@ -1108,15 +1111,289 @@ export const reformatorio_biblioteca_aprendizaje_1 = {
   id: "reformatorio_biblioteca_aprendizaje_1",
   title: "Primera grieta",
   title_en: "First crack",
-  text: "Lia pasa una mano por las páginas, luego detiene sus dedos en un símbolo espiralado.\n\n—No es como la magia que enseñan aquí. No es buena ni mala. Pero si no la entiendes, ella te entiende a ti primero.\n\nTe muestra una página. El trazo del símbolo parece moverse sutilmente, como si respirara.\n\n—No se trata de repetir. Se trata de sentir. Vamos a empezar.",
+  text: "Lia pasa una mano por las páginas y se detiene en un símbolo espiralado.\n\n—No es como la magia de acá —dice—. No es buena ni mala. Pero si no la entendés... ella te entiende a vos primero.\n\nTe muestra un símbolo. Parece moverse.\n\n—No se repite. Se siente. Vamos a empezar.",
   text_en:
-    "Lia runs her fingers over the pages, then stops at a spiraling symbol.\n\n“This isn’t like the magic they teach here. It’s not good or bad. But if you don’t understand it, it understands you first.”\n\nShe shows you a page. The symbol’s line seems to shift slightly, as if it were breathing.\n\n“It’s not about repeating. It’s about feeling. Let’s begin.”",
+    "Lia runs her fingers over the pages and stops at a spiraling symbol.\n\n“This isn’t like the magic they teach. It’s not good or bad. But if you don’t understand it… it understands you.”\n\nShe shows you a symbol. It seems to move.\n\n“It’s not about repeating. It’s about feeling. Let’s begin.”",
+  background: require("../../../assets/backgrounds/huerfano/lia_libro.png"),
   etiquetas: ["inicio_aprendizaje_magia_prohibida"],
+  options: [
+    {
+      text: "Preguntar si alguien más sabe de esto",
+      text_en: "Ask if anyone else knows about this",
+      next: "reformatorio_biblioteca_aprendizaje_2a",
+    },
+    {
+      text: "Preguntar si esto tiene que ver con tus padres",
+      text_en: "Ask if this is related to your parents",
+      next: "reformatorio_biblioteca_aprendizaje_2b",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_aprendizaje_2a = {
+  id: "reformatorio_biblioteca_aprendizaje_2a",
+  title: "Confidencias",
+  title_en: "Confidences",
+  text: "—Antes venían otros —dice Lia—. Pero ya no quedan. Nadie quiere que esto exista.\n\nTe observa un momento antes de continuar.\n\n—Tamar, tus padres... Ellos veían lo mismo. Veían el potencial.\n\nSus palabras quedan flotando, pero algo en su voz te hace entender que esto es solo el comienzo.",
+  text_en:
+    '"Others used to come here," Lia says. "But they’re gone now. No one wants this to exist."\n\nShe looks at you for a moment before continuing.\n\n"Tamar, your parents... They saw the same thing. They saw the potential."\n\nHer words hang in the air, but something in her tone tells you this is just the beginning.',
+  etiquetas: ["pregunto_otros"],
+  options: [
+    {
+      text: "Seguir aprendiendo con ella",
+      text_en: "Keep learning with her",
+      next: "reformatorio_biblioteca_aprendizaje_3",
+    },
+    {
+      text: "Preguntar si esto tiene que ver con tus padres",
+      text_en: "Ask if this is related to your parents",
+      next: "reformatorio_biblioteca_aprendizaje_2b",
+      condition: { etiquetasExcluye: ["pregunto_padres"] },
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_aprendizaje_2b = {
+  id: "reformatorio_biblioteca_aprendizaje_2b",
+  title: "Herencia oculta",
+  title_en: "Hidden legacy",
+  text: "Lia baja la voz.\n\n—Tus padres no solo estudiaron esto. Dejaron notas. Dibujos. Sospechas.\n\nTe alcanza una hoja doblada, con un símbolo a medio trazar.\n\n—Tal vez sabían que un día alguien iba a necesitar seguir lo que ellos empezaron.",
+  text_en:
+    'Lia lowers her voice.\n\n"Your parents didn’t just study this. They left notes. Drawings. Clues."\n\nShe hands you a folded page with a half-drawn symbol.\n\n"Maybe they knew someone would need to continue what they started."',
+  etiquetas: ["pregunto_padres"],
+  options: [
+    {
+      text: "Seguir aprendiendo con ella",
+      text_en: "Keep learning with her",
+      next: "reformatorio_biblioteca_aprendizaje_3",
+    },
+    {
+      text: "Preguntar si alguien más sabe de esto",
+      text_en: "Ask if anyone else knows about this",
+      next: "reformatorio_biblioteca_aprendizaje_2a",
+      condition: { etiquetasExcluye: ["pregunto_otros"] },
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_aprendizaje_3 = {
+  id: "reformatorio_biblioteca_aprendizaje_3",
+  title: "Días en S13",
+  title_en: "Days in S13",
+  text: "Pasás cada vez más tiempo con Lia. A veces dormís ahí, rodeado de libros.\n\nDescubren que algunos símbolos reaccionan a emociones: tristeza, rabia, deseo.\n\n—Esto está vivo —dice Lia.\n\nEntre ambos crece una confianza muda, difícil de romper.",
+  text_en:
+    "You spend more and more time with Lia. Sometimes you sleep there, surrounded by books.\n\nYou find that some symbols react to emotion—grief, anger, longing.\n\n“This is alive,” Lia says.\n\nA quiet trust forms between you, hard to break.",
+  background: require("../../../assets/backgrounds/huerfano/dias_s13.png"),
   options: [
     {
       text: "Continuar",
       text_en: "Continue",
-      next: "reformatorio_biblioteca_aprendizaje_2",
+      next: "reformatorio_biblioteca_aprendizaje_4",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_aprendizaje_4 = {
+  id: "reformatorio_biblioteca_aprendizaje_4",
+  title: "La raíz del conjuro",
+  title_en: "Root of the spell",
+  text: "Cada noche volvés a S13. Encendés la lámpara, abrís el libro, mirás a Lia. El mundo fuera de eso ya no importa.\n\nLia cambió. Más delgada, más callada. Pero sus ojos brillan con algo nuevo.\n\n—Esto no es un juego —te dijo—. Pero puede cambiarlo todo.",
+  text_en:
+    "Every night, you return to S13. You light the lamp, open the book, watch Lia. Nothing outside this matters anymore.\n\nLia has changed. Quieter, thinner. But her eyes burn with something new.\n\n“This isn’t a game,” she told you. “But it could change everything.”",
+  background: require("../../../assets/backgrounds/huerfano/obsesion_libro.png"),
+  etiquetas: ["obsesion_magia_prohibida"],
+  options: [
+    {
+      text: "Explorar el conjuro con ella",
+      text_en: "Explore the spell with her",
+      next: "reformatorio_biblioteca_obsesion_creencia_1",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_obsesion_creencia_1 = {
+  id: "reformatorio_biblioteca_obsesion_creencia_1",
+  title: "Ritual silencioso",
+  title_en: "Silent Ritual",
+  text: "Dormís en el suelo. El polvo, las páginas abiertas, la lámpara vieja... todo forma parte del ritual.\n\n—No hay nada fuera de esto —dice Lia, sin mirarte.\n\nAsentís. No hace falta decir nada más.",
+  text_en:
+    "You sleep on S13’s floor. Dust, open pages, the old lamp... it’s all part of the ritual.\n\n“There’s nothing outside this,” Lia says, not looking at you.\n\nYou nod. Nothing more needs to be said.",
+  background: require("../../../assets/backgrounds/huerfano/obsesion_libro2.png"),
+  etiquetas: ["creencia_total_magia_prohibida"],
+  options: [
+    {
+      text: "Seguir leyendo juntos",
+      text_en: "Keep reading together",
+      next: "reformatorio_biblioteca_obsesion_creencia_2",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_obsesion_creencia_2 = {
+  id: "reformatorio_biblioteca_obsesion_creencia_2",
+  title: "La única respuesta",
+  title_en: "The Only Answer",
+  text: "Algunas noches no hablaban. Solo miraban los símbolos, sintiéndolos vibrar.\n\nYa no pensás en escapar. Pensás en dominarla. Como si la magia prohibida fuera la única verdad.",
+  text_en:
+    "Some nights, no words were spoken. You just stared at the symbols, feeling them hum.\n\nYou don’t think about escaping anymore. You think about mastering it. As if forbidden magic were the only truth.",
+  background: require("../../../assets/backgrounds/huerfano/obsesion_libro2.png"),
+  options: [
+    {
+      text: "Profundizar en el conjuro",
+      text_en: "Delve deeper into the spell",
+      next: "reformatorio_biblioteca_conjuro_inicio",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_conjuro_inicio = {
+  id: "reformatorio_biblioteca_conjuro_inicio",
+  title: "El límite invisible",
+  title_en: "The Invisible Line",
+  text: "—Este es el más complejo —dice Lia, dejando caer un libro sobre la mesa.\n\nEl símbolo ocupa dos páginas. Alrededor, notas confusas, líneas tachadas, advertencias.\n\n—No está completo —añade—. Pero creo que podemos terminarlo.",
+  text_en:
+    "“This is the most complex one,” Lia says, placing a book on the table.\n\nThe symbol covers both pages. Around it: messy notes, crossed lines, warnings.\n\n“It’s not finished,” she adds. “But I think we can complete it.”",
+  background: require("../../../assets/backgrounds/huerfano/conjuro1.png"),
+  etiquetas: ["conjuro_prohibido_descubierto"],
+  options: [
+    {
+      text: "Ayudarla a completarlo",
+      text_en: "Help her complete it",
+      next: "reformatorio_biblioteca_conjuro_preparacion",
+    },
+    {
+      text: "Preguntar si es peligroso",
+      text_en: "Ask if it’s dangerous",
+      next: "reformatorio_biblioteca_conjuro_duda",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_conjuro_preparacion = {
+  id: "reformatorio_biblioteca_conjuro_preparacion",
+  title: "Manos a la obra",
+  title_en: "Hands to Work",
+  text: "Trazan líneas nuevas sobre las páginas. Corrigen, prueban. A veces, el símbolo parece brillar un segundo, luego se apaga.\n\n—Está reaccionando —susurra Lia—. Está vivo.",
+  text_en:
+    "You draw new lines over the pages. Fix, test. Sometimes, the symbol glows briefly before fading.\n\n“It’s reacting,” Lia whispers. “It’s alive.”",
+  background: require("../../../assets/backgrounds/huerfano/conjuro1.png"),
+  etiquetas: ["conjuro_empezado"],
+  options: [
+    {
+      text: "Seguir trabajando juntos",
+      text_en: "Keep working together",
+      next: "reformatorio_biblioteca_conjuro_union",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_conjuro_duda = {
+  id: "reformatorio_biblioteca_conjuro_duda",
+  title: "Una pausa breve",
+  title_en: "A Brief Pause",
+  text: "—Todo poder tiene riesgos —responde Lia—. Pero también tiene sentido. Si llegó hasta acá, es por algo.\n\nTe mira esperando tu decisión.",
+  text_en:
+    "“All power has risks,” Lia replies. “But it has purpose too. If it got this far, it means something.”\n\nShe looks at you, waiting for your choice.",
+  background: require("../../../assets/backgrounds/huerfano/conjuro1.png"),
+  options: [
+    {
+      text: "Aceptar ayudarla",
+      text_en: "Agree to help her",
+      next: "reformatorio_biblioteca_conjuro_preparacion",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_conjuro_union = {
+  id: "reformatorio_biblioteca_conjuro_union",
+  title: "Una sola intención",
+  title_en: "One Intention",
+  text: "Las manos de ambos se cruzan sobre el libro. El símbolo vibra, y una brisa invisible apaga la lámpara.\n\n—Ya casi —dice Lia, con los ojos fijos en el trazo.\n\nNo sabés si es miedo o emoción. Pero ya no hay vuelta atrás.",
+  text_en:
+    "Both your hands meet over the book. The symbol vibrates, and an unseen breeze puts out the lamp.\n\n“Almost there,” Lia says, eyes locked on the mark.\n\nYou’re not sure if it’s fear or excitement. But there’s no turning back now.",
+  background: require("../../../assets/backgrounds/huerfano/conjuro2.png"),
+  etiquetas: ["conjuro_listo_para_invocar"],
+  options: [
+    {
+      text: "Intentar el conjuro",
+      text_en: "Attempt the spell",
+      next: "reformatorio_biblioteca_conjuro_resultado_1",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_conjuro_resultado_1 = {
+  id: "reformatorio_biblioteca_conjuro_resultado_1",
+  title: "Destino compartido",
+  title_en: "Shared Fate",
+  text: "La energía se desborda. Símbolos flotan en el aire, el suelo tiembla, las luces parpadean.\n\nLia extiende la mano hacia vos. Su mirada brilla con miedo y determinación. Algo va a romperse.\n\nSabés que uno de los dos no saldrá de esto.",
+  text_en:
+    "The energy surges. Symbols float in the air, the ground shakes, lights flicker.\n\nLia reaches out. Her eyes shine with fear and resolve. Something is about to break.\n\nYou know one of you won't make it out of this.",
+  background: require("../../../assets/backgrounds/huerfano/conjuro3.png"),
+  options: [
+    {
+      text: "Intentar salvarla",
+      text_en: "Try to save her",
+      next: "reformatorio_biblioteca_conjuro_final_usuario_muere",
+    },
+    {
+      text: "No interferir",
+      text_en: "Don't interfere",
+      next: "reformatorio_biblioteca_conjuro_final_lia_muere",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_conjuro_final_usuario_muere = {
+  id: "reformatorio_biblioteca_conjuro_final_usuario_muere",
+  title: "El precio de proteger",
+  title_en: "The Price of Protection",
+  text: "Te lanzás hacia ella. Todo se vuelve blanco.\n\nSentís tu cuerpo desaparecer. Lia grita tu nombre.\n\nPor un momento, ves su rostro bañado en lágrimas… y orgullo.\n\nEntonces, no queda nada.",
+  text_en:
+    "You rush toward her. Everything turns white.\n\nYou feel your body dissolve. Lia screams your name.\n\nFor a moment, you see her face—tearful, proud.\n\nThen, nothing remains.",
+  background: require("../../../assets/backgrounds/huerfano/conjuro_usuario.png"),
+  etiquetas: ["final_jugador_muere"],
+  options: [
+    {
+      text: "Finalizar partida",
+      text_en: "End game",
+      next: "game_over_muerte_usuario",
+    },
+  ],
+};
+
+export const reformatorio_biblioteca_conjuro_final_lia_muere = {
+  id: "reformatorio_biblioteca_conjuro_final_lia_muere",
+  title: "El sacrificio",
+  title_en: "The Sacrifice",
+  text: "No te movés. La magia la envuelve. Lia sonríe… y luego se rompe en luz.\n\nTodo explota en símbolos y viento. Algo se abre.\n\nTu cuerpo cae. Pero no al suelo.",
+  text_en:
+    "You don’t move. The magic takes her. Lia smiles… and then breaks into light.\n\nEverything explodes in symbols and wind. Something opens.\n\nYour body falls. But not to the floor.",
+  background: require("../../../assets/backgrounds/huerfano/conjuro_lia.png"),
+  etiquetas: ["lia_muerta", "inicio_afueras"],
+  options: [
+    {
+      text: "Despertar",
+      text_en: "Wake up",
+      next: "afueras_inicio",
+    },
+  ],
+};
+
+export const game_over_muerte_usuario = {
+  id: "game_over_muerte_usuario",
+  title: "Fin",
+  title_en: "End",
+  text: "Tu historia termina aquí.\n\nAlgunas decisiones traen paz, otras, sacrificio.\n\nEsta fue la tuya.",
+  text_en:
+    "Your story ends here.\n\nSome choices bring peace. Others, sacrifice.\n\nThis was yours.",
+  background: require("../../../assets/backgrounds/huerfano/game_over.png"),
+  etiquetas: ["game_over"],
+  options: [
+    {
+      text: "Volver al inicio",
+      text_en: "Back to start",
+      next: "intro_1",
     },
   ],
 };
@@ -1139,6 +1416,25 @@ export const reformatorio_biblioteca_estantes = {
       text: "Dejar el libro",
       text_en: "Put the book back",
       next: "reformatorio_exploracion_retorno",
+    },
+  ],
+};
+
+//---------------------- ARCO LAS AFUERAS ----------------------------------------------------------------
+export const afueras_inicio = {
+  id: "afueras_inicio",
+  title: "Despertar lejos",
+  title_en: "Awakening Far Away",
+  text: "Despertás en el barro, bajo un cielo sin nubes.\n\nEl aire es denso, la tierra está quemada. No hay muros, no hay reformatorio.\n\nTu cuerpo tiembla. Algo cambió.\n\nUn símbolo arde levemente en tu piel, como una huella que no sabías que llevabas.",
+  text_en:
+    "You wake up in the mud, under a cloudless sky.\n\nThe air is dense. The ground scorched. No walls. No reformatorio.\n\nYour body shakes. Something has changed.\n\nA faint symbol glows on your skin—like a mark you didn’t know you carried.",
+  background: require("../../../assets/backgrounds/huerfano/afuera_inicios.png"),
+  etiquetas: ["afuera", "inicio_afueras", "marca_magia"],
+  options: [
+    {
+      text: "Levantarte",
+      text_en: "Get up",
+      next: "afueras_exploracion_1",
     },
   ],
 };

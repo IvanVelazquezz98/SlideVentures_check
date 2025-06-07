@@ -1,3 +1,5 @@
+import erranteAvatar from "../../../assets/avatars/errante.png";
+
 export const intro_1 = {
   id: "intro_1",
   title: "Hace siglos",
@@ -5,6 +7,7 @@ export const intro_1 = {
   text_en:
     "Centuries ago, the skies shattered like a cursed crystal.\n\nEther storms tore through the heavens, devouring forests, villages, and souls.\n\nWhat was once familiar twisted… and reality ceased to obey.",
   background: require("../../../assets/backgrounds/intro/intro_1.png"),
+  avatar: erranteAvatar,
   options: [
     {
       text: "Avanzar",

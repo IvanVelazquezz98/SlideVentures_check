@@ -52,6 +52,8 @@ export default function GameScreen() {
   const cardsOpacity = useSharedValue(1);
   const [cardsVisible, setCardsVisible] = useState(true);
 
+console.log('ETIQUETAS', player.etiquetas)
+
   const cardsAnimatedStyle = useAnimatedStyle(() => ({
     opacity: cardsOpacity.value,
     zIndex: 1000,

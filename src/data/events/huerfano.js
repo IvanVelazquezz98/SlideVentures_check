@@ -1398,6 +1398,8 @@ export const game_over_muerte_usuario = {
   ],
 };
 
+//------------------------- ESTANTES
+
 export const reformatorio_biblioteca_estantes = {
   id: "reformatorio_biblioteca_estantes",
   title: "Códigos olvidados",
@@ -1405,6 +1407,7 @@ export const reformatorio_biblioteca_estantes = {
   text: "Revisás libros con títulos borrados, hojas arrancadas, páginas con manchas negras. Algunos símbolos se repiten. Sentís que algo en ellos llama tu atención.\n\nUno menciona una palabra tachada: *‘despertar’*.",
   text_en:
     "You flip through books with faded titles, torn pages, and black stains. Some symbols repeat across them. Something in them draws your attention.\n\nOne mentions a crossed-out word: *‘awakening’*.",
+  background: require("../../../assets/backgrounds/huerfano/biblioteca_mesa.png"),
   options: [
     {
       text: "Anotar los símbolos",
@@ -1419,6 +1422,514 @@ export const reformatorio_biblioteca_estantes = {
     },
   ],
 };
+
+export const reformatorio_biblioteca_solo_estudio = {
+  id: "reformatorio_biblioteca_solo_estudio",
+  title: "Estudio en soledad",
+  title_en: "Study in solitude",
+  //background: require("../../../assets/backgrounds/huerfano/biblioteca_estudio.png"),
+  text: "Pasás horas mirando los símbolos. Al principio no tienen sentido.\n\nPero cuando cerrás los ojos, algo se alinea. Una secuencia aparece, como si guiara tu mente.\n\nEntre hojas sueltas, encontrás un papel arrugado:\n\n*“La espiral no se revela. Se recuerda.”*",
+  text_en: "You spend hours staring at the symbols. At first, they mean nothing.\n\nBut when you close your eyes, something aligns. A pattern appears—as if guiding your mind.\n\nBetween loose pages, you find a crumpled note:\n\n*“The spiral does not reveal itself. It remembers.”*",
+  options: [
+    {
+      text: "Cerrar los ojos y seguir el patrón",
+      text_en: "Close your eyes and follow the pattern",
+      etiquetas: ["sintio_la_llamada"],
+      next: "reformatorio_sala_prohibida",
+    },
+  ],
+};
+
+export const reformatorio_sala_prohibida = {
+  id: "reformatorio_sala_prohibida",
+  title: "El rincón sellado",
+  title_en: "The sealed corner",
+  background: require("../../../assets/backgrounds/huerfano/sala_prohibida.png"),
+  text: "Siguiendo el patrón, caminás por la biblioteca como si ya hubieras estado ahí antes. Tus pasos te llevan a una estantería desplazada.\n\nDetrás, una pared manchada con hollín. No parece importante… hasta que ves una rendija apenas visible.",
+  text_en:
+    "Following the pattern, you walk through the library as if you've been there before. Your steps lead you to a shifted shelf.\n\nBehind it, a wall stained with soot. It looks unremarkable… until you notice a barely visible crack.",
+  etiquetas: ["toco_la_grieta"],
+  options: [
+    {
+      text: "Empujar la rendija",
+      text_en: "Push the crack",
+      next: "reformatorio_sala_prohibida_2",
+    },
+    {
+      text: "Alejarte en silencio",
+      text_en: "Quietly walk away",
+      etiquetas: ["evito_la_grieta"],
+      next: "reformatorio_exploracion_retorno",
+    },
+  ],
+};
+
+export const reformatorio_sala_prohibida_2 = {
+  id: "reformatorio_sala_prohibida_2",
+  title: "El hueco",
+  title_en: "The Hollow",
+  background: require("../../../assets/backgrounds/huerfano/sala_prohibida_2.png"),
+  text: "Empujás, y la piedra cede. Un espacio vacío se revela: angosto, oscuro, y con olor a hierro viejo.\n\nEn el suelo hay marcas. No sabés si están grabadas… o si nacieron ahí.",
+  text_en:
+    "You push, and the stone gives way. A narrow, dark space opens up. It smells like old iron.\n\nThere are marks on the floor. You're not sure if they were carved—or born there.",
+  options: [
+    {
+      text: "Entrar y explorar el espacio oculto",
+      text_en: "Enter and explore the hidden space",
+      next: "reformatorio_voces_mudas",
+    },
+    {
+      text: "Cerrar la entrada y alejarte",
+      text_en: "Seal the entrance and walk away",
+      next: "reformatorio_exploracion_retorno",
+    },
+  ],
+};
+
+export const reformatorio_voces_mudas = {
+  id: "reformatorio_voces_mudas",
+  title: "Voces mudas",
+  title_en: "Wordless voices",
+  // background: require("../../../assets/backgrounds/huerfano/sala_prohibida_interior.png"),
+  text: "El espacio oculto parece más antiguo que el reformatorio. Las paredes están cubiertas de marcas.\n\nEn el suelo, una espiral trazada en carbón. Al tocar el centro, algo se activa.",
+  text_en:
+    "The hidden space feels older than the reformatorio. The walls are covered in markings.\n\nOn the floor, a spiral drawn in charcoal. When you touch the center, something stirs.",
+  etiquetas: ["primer_contacto"],
+  options: [
+    {
+      text: "Escuchar lo que viene",
+      text_en: "Listen to what follows",
+      next: "reformatorio_voces_mudas_2",
+    },
+    {
+      text: "Retirarte lentamente",
+      text_en: "Back away slowly",
+      next: "reformatorio_exploracion_retorno",
+    },
+  ],
+};
+
+export const reformatorio_voces_mudas_2 = {
+  id: "reformatorio_voces_mudas_2",
+  title: "Sin sonido",
+  title_en: "Without sound",
+  // background: require("../../../assets/backgrounds/huerfano/sala_prohibida_interior.png"),
+  text: "Una voz sin sonido se impone en tu mente.\n\nVes imágenes: niños con bocas selladas, luces girando al revés, una sombra que se mueve sola.\n\nSentís que algo te observa desde el otro lado.",
+  text_en:
+    "A soundless voice presses into your mind.\n\nYou see images: children with sealed mouths, lights spinning backwards, a shadow moving on its own.\n\nYou feel something watching you from the other side.",
+  options: [
+    {
+      text: "Seguir escuchando",
+      text_en: "Keep listening",
+      next: "reformatorio_vision_fragmentada",
+    },
+    {
+      text: "Retroceder",
+      text_en: "Step back",
+      next: "reformatorio_exploracion_retorno",
+    },
+  ],
+};
+
+export const reformatorio_vision_fragmentada = {
+  id: "reformatorio_vision_fragmentada",
+  title: "Visión fragmentada",
+  title_en: "Fragmented vision",
+  background: require("../../../assets/backgrounds/huerfano/vision_fragmentada.png"),
+  text: "Parpadeás. Cuando volvés a abrir los ojos, ya no estás en la biblioteca.\n\nEstás en tu antigua casa. La noche de la redada. Pero algo no encaja.",
+  text_en:
+    "You blink. When your eyes open again, you're no longer in the library.\n\nYou're in your old home. The night of the raid. But something is wrong.",
+  etiquetas: ["vision_pasado"],
+  options: [
+    {
+      text: "Seguir observando",
+      text_en: "Keep watching",
+      next: "reformatorio_vision_fragmentada_2",
+    },
+  ],
+};
+
+export const reformatorio_vision_fragmentada_2 = {
+  id: "reformatorio_vision_fragmentada_2",
+  title: "Ecos del pasado",
+  title_en: "Echoes of the past",
+  background: require("../../../assets/backgrounds/huerfano/vision_fragmentada.png"),
+  text: "Tu madre te dice que te escondas, pero no usa tu nombre.\n\nTu padre está ahí… pero tiene los ojos en blanco. No te reconoce. En el suelo, un libro abierto muestra una espiral. La misma que acabás de tocar.\n\nY una voz —la misma de antes— susurra:\n\n*“Lo que fuiste… o lo que podrías ser.”*",
+  text_en:
+    "Your mother tells you to hide—but she doesn’t say your name.\n\nYour father is there… but his eyes are blank. He doesn’t know who you are. On the floor, an open book shows a spiral. The same you just touched.\n\nAnd a voice—the same as before—whispers:\n\n*“What you were… or what you could be.”*",
+  options: [
+    {
+      text: "Intentar hablar con tu madre",
+      text_en: "Try to talk to your mother",
+      next: "reformatorio_eco_madre",
+    },
+    {
+      text: "Cerrar el libro",
+      text_en: "Close the book",
+      next: "reformatorio_exploracion_retorno",
+    },
+    {
+      text: "Tocar la espiral en el libro",
+      text_en: "Touch the spiral in the book",
+      etiquetas: ["acepta_visión"],
+      next: "reformatorio_sello_rapido",
+    },
+  ],
+};
+
+export const reformatorio_eco_madre = {
+  id: "reformatorio_eco_madre",
+  title: "Eco de madre",
+  title_en: "Mother's echo",
+  text: "Ella gira hacia vos lentamente. Su rostro se ve igual… pero vacío.\n\n“No soy ella”, dice. Su voz tiene un eco que no debería.",
+  text_en:
+    "She slowly turns toward you. Her face looks the same… but it’s empty.\n\n“I’m not her,” she says. Her voice has an echo that shouldn’t exist.",
+    background: require("../../../assets/backgrounds/huerfano/eco_madre.png"),
+  options: [
+    {
+      text: "Seguir escuchando",
+      text_en: "Keep listening",
+      next: "reformatorio_eco_madre_2",
+    },
+  ],
+};
+
+export const reformatorio_eco_madre_2 = {
+  id: "reformatorio_eco_madre_2",
+  title: "Elección",
+  title_en: "Choice",
+  background: require("../../../assets/backgrounds/huerfano/vision_desvanece.png"),
+  text: "“La memoria es un puente. Pero el precio es elegir qué lado vas a cruzar.”\n\nLa casa empieza a temblar. Todo se desvanece, excepto el libro.\n\nY la espiral que aún brilla.",
+  text_en:
+    "“Memory is a bridge. But the price is choosing which side you’ll cross.”\n\nThe house begins to shake. Everything fades—except the book.\n\nAnd the spiral, still glowing.",
+  options: [
+    {
+      text: "Tocar la espiral",
+      text_en: "Touch the spiral",
+      etiquetas: ["acepta_visión"],
+      next: "reformatorio_sello_rapido",
+    },
+    {
+      text: "Quedarte con ella un momento más",
+      text_en: "Stay with her a moment longer",
+      etiquetas: ["recuerdo_madre", "resistencia_emocional"],
+      next: "reformatorio_sello_emotivo",
+    },
+  ],
+};
+
+export const reformatorio_sello_rapido = {
+  id: "reformatorio_sello_rapido",
+  title: "El sello",
+  title_en: "The Seal",
+   background: require("../../../assets/backgrounds/huerfano/vision_emotivo_2.png"),
+  text: "El tacto es instantáneo. La espiral se traga tu visión. Sentís que algo tuyo se desprende, como una cuerda que se corta dentro del pecho.\n\nCuando abrís los ojos, estás de nuevo en la sala oculta.\n\nEn el suelo, la espiral está completa. Está trazada en sangre. Tu sangre.",
+  text_en:
+    "The touch is instant. The spiral devours your vision. You feel something inside you snap, like a rope breaking deep in your chest.\n\nWhen you open your eyes, you’re back in the hidden room.\n\nOn the floor, the spiral is complete. Drawn in blood. Your blood.",
+  etiquetas: ["sangre_sello_activado", "vacio_interno"],
+  options: [
+    {
+      text: "Acercarte al símbolo",
+      text_en: "Approach the symbol",
+      next: "reformatorio_abre_portal",
+    },
+  ],
+};
+
+export const reformatorio_sello_emotivo = {
+  id: "reformatorio_sello_emotivo",
+  title: "Último momento",
+  title_en: "Last moment",
+  background: require("../../../assets/backgrounds/huerfano/vision_emotivo.png"),
+  text: "La figura te observa en silencio. En sus ojos vacíos, ves un reflejo: vos, más chico, corriendo entre libros con ella.\n\nUn instante cálido. Imposible de recuperar.\n\n“Eso era tuyo,” dice la voz. “Ahora también lo será el precio.”",
+  text_en:
+    "The figure watches you in silence. In her empty eyes, you see a reflection: you, younger, running through bookshelves with her.\n\nA warm moment—impossible to recover.\n\n“That was yours,” the voice says. “Now so will be the price.”",
+  options: [
+    {
+      text: "Aceptar el precio",
+      text_en: "Accept the price",
+      next: "reformatorio_sello_emotivo_2",
+    },
+  ],
+};
+
+export const reformatorio_sello_emotivo_2 = {
+  id: "reformatorio_sello_emotivo_2",
+  title: "El precio",
+  title_en: "The Price",
+  background: require("../../../assets/backgrounds/huerfano/vision_emotivo_2.png"),
+  text: "Todo se quiebra en mil fragmentos de luz.\n\nDespertás en la sala oculta. Tu cuerpo tiembla. Tu mano arde.\n\nEn el suelo, el símbolo espiral brilla intensamente… está hecho con tu sangre.",
+  text_en:
+    "Everything shatters into a thousand shards of light.\n\nYou wake in the hidden room. Your body shakes. Your hand burns.\n\nOn the floor, the spiral symbol glows brightly… drawn in your blood.",
+  etiquetas: ["sangre_sello_activado", "dolor_ligado", "recuerdo_ofrecido"],
+  options: [
+    {
+      text: "Acercarte al símbolo",
+      text_en: "Approach the symbol",
+      next: "reformatorio_abre_portal",
+    },
+  ],
+};
+
+export const reformatorio_abre_portal = {
+  id: "reformatorio_abre_portal",
+  title: "La grieta",
+  title_en: "The Rift",
+  background: require("../../../assets/backgrounds/huerfano/abre_portal.png"),
+  text: "Volvés al rincón sellado. Pero ya no es un rincón.\n\nEl suelo está rajado. El aire vibra con un zumbido grave que resuena en tu pecho. La espiral en el centro ya no parece un dibujo: brota desde la piedra, como si hubiera despertado.",
+  text_en:
+    "You return to the sealed corner. But it's no longer a corner.\n\nThe ground is cracked. The air hums with a low vibration that echoes in your chest. The spiral in the center no longer looks drawn—it grows from the stone, as if awakened.",
+  etiquetas: ["puerta_abierta"],
+  options: [
+    {
+      text: "Acercarte al centro",
+      text_en: "Approach the center",
+      next: "reformatorio_abre_portal_2",
+    },
+  ],
+};
+
+export const reformatorio_abre_portal_2 = {
+  id: "reformatorio_abre_portal_2",
+  title: "El puente",
+  title_en: "The bridge",
+  background: require("../../../assets/backgrounds/huerfano/abre_portal.png"),
+  text: "La temperatura cae. La luz se curva alrededor del símbolo. Algo —que no ves pero sentís— te espera más allá.\n\nTu pulso se alinea con el zumbido. El aire huele a piedra rota y a algo que no tiene nombre. Recordás una voz sin sonido. Un reflejo que no era tuyo. Una elección ya hecha.\n\n*“El puente está abierto.”*",
+  text_en:
+    "The temperature drops. Light bends around the symbol. Something—you cannot see but can feel—waits beyond.\n\nYour heartbeat matches the hum. The air smells like broken stone and something nameless. You remember a voiceless voice. A reflection that wasn’t yours. A choice already made.\n\n*“The bridge is open.”*",
+  options: [
+    {
+      text: "Entrar sin dudar",
+      text_en: "Enter without hesitation",
+      etiquetas: ["entrego_voluntad"],
+      next: "reformatorio_ritual_entidad",
+    },
+    {
+      text: "Hacer una pregunta antes de cruzar",
+      text_en: "Ask a question before crossing",
+      etiquetas: [
+        "curioso",
+        "resistencia_emocional",
+        "recuerdo_madre",
+        "dolor_ligado",
+      ],
+      next: "reformatorio_entidad_responde_1",
+    },
+  ],
+};
+
+export const reformatorio_entidad_responde_1 = {
+  id: "reformatorio_entidad_responde_1",
+  title: "Preguntas",
+  title_en: "Questions",
+  //background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "“¿Querés saber quiénes fueron?”\n\nLa voz no vibra. No ocupa espacio. Solo existe.\n\n“Tus padres no huían. Estaban cerca de abrir los sellos sin perder la mente.”\n\n“No buscaban poder: buscaban recordar un mundo sin muros.”",
+
+  text_en:
+    "“You want to know who they were?”\n\nThe voice does not vibrate. It doesn’t take up space. It just is.\n\n“Your parents weren’t running. They searched for a way to open the seals without being broken.”\n\n“Forbidden magic isn’t corruption. It is remembrance.”",
+  options: [
+    {
+      text: "Asentir",
+      text_en: "Nod",
+      etiquetas: ["perdio_voz"],
+      next: "reformatorio_entidad_responde_2",
+    },
+  ],
+};
+
+export const reformatorio_entidad_responde_2 = {
+  id: "reformatorio_entidad_responde_2",
+  title: "Silencio",
+  title_en: "Silence",
+  //background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "“Tu voz ya no te pertenece.”\n\n“La sombra fue lo primero que los comisionados vieron en vos. Sabían lo que heredaste.”\n\nAlgo en tu espalda se desprende. Ya no proyectás nada.",
+
+  text_en:
+    "“Your voice is no longer yours.”\n\n“They saw your shadow first. It will be the first to leave.”\n\nSomething detaches from your back. You cast no shadow.",
+  options: [
+    {
+      text: "Saber más",
+      text_en: "Know more",
+      etiquetas: ["perdio_sombra"],
+      next: "reformatorio_entidad_responde_3",
+    },
+  ],
+};
+
+export const reformatorio_entidad_responde_3 = {
+  id: "reformatorio_entidad_responde_3",
+  title: "Fronteras rotas",
+  title_en: "Shattered boundaries",
+  //background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "“Tus padres creían que la magia prohibida era un milagro mal entendido.”\n\n“No buscaban poder. Buscaban romper la frontera entre la muerte y la memoria.”\n\n“Querían que el mundo recordara todo lo que perdió. Incluso a los que ya no están.”",
+  text_en:
+    "“Your parents believed forbidden magic was a misunderstood miracle.”\n\n“They didn’t seek power. They wanted to break the line between death and memory.”\n\n“They wished the world could remember everything it had lost—even those who are gone.”",
+  options: [
+    {
+      text: "Asentir otra vez",
+      text_en: "Nod again",
+      etiquetas: ["perdio_reflejo"],
+      next: "reformatorio_entidad_responde_4",
+    },
+    {
+      text: "Dejar de escuchar",
+      text_en: "Stop listening",
+      next: "reformatorio_ritual_entidad",
+    },
+  ],
+};
+
+export const reformatorio_entidad_responde_4 = {
+  id: "reformatorio_entidad_responde_4",
+  title: "Sin reflejo",
+  title_en: "Without reflection",
+  //background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "Buscás tu reflejo. No está.\n\nLa entidad guarda silencio… como si esperara que entiendas.\n\n“Podés irte ahora. No sabrás todo. Pero seguirás siendo.”",
+  text_en:
+    "You look for your reflection. It’s gone.\n\nThe entity remains silent… as if waiting for you to understand.\n\n“You may leave now. You won’t know it all. But you’ll still be.”",
+  options: [
+    {
+      text: "Asentir otra vez",
+      text_en: "Nod again",
+      etiquetas: ["entrega_total"],
+      next: "reformatorio_entidad_responde_final",
+    },
+    {
+      text: "Dejar de escuchar",
+      text_en: "Stop listening",
+      next: "reformatorio_ritual_entidad",
+    },
+  ],
+};
+
+
+
+export const reformatorio_entidad_responde_final = {
+  id: "reformatorio_entidad_responde_final_1",
+  title: "Última verdad",
+  title_en: "Final truth",
+  //background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "“La magia prohibida no da poder. Devuelve lo perdido.”\n\n“Pero nadie puede portar memoria completa sin romperse.”\n\nTu cuerpo empieza a temblar. Las manos, los pies… como si estuvieras hecho de algo que no quiere quedarse.",
+  text_en:
+    "“Forbidden magic grants no power. It returns what was lost.”\n\n“But no one can carry full memory without breaking.”\n\nYour body begins to tremble. Your hands, your feet… as if you were made of something that no longer wishes to stay.",
+  etiquetas: [],
+  options: [
+    {
+      text: "Aceptar el precio",
+      text_en: "Accept the price",
+      next: "reformatorio_entidad_responde_final_2",
+    },
+  ],
+};
+
+export const reformatorio_entidad_responde_final_2 = {
+  id: "reformatorio_entidad_responde_final_2",
+  title: "Desvanecimiento",
+  title_en: "Dissolution",
+  //background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "Sentís cómo tu cuerpo se disuelve. No duele. Simplemente, dejás de estar.\n\nLa última imagen se impone en tu mente: tus padres, jóvenes, enfrentando al comisionado… y sonriendo. Como si supieran que esto ocurriría.",
+  text_en:
+    "You feel your body dissolve. It doesn’t hurt. You simply cease to be.\n\nThe final image fills your mind: your parents, young, facing the commissioner… and smiling. As if they knew this would happen.",
+  etiquetas: [
+    "perdio_cuerpo",
+    "perdio_voz",
+    "perdio_sombra",
+    "perdio_reflejo",
+    "muerte_consciente",
+  ],
+  options: [
+    {
+      text: "...",
+      text_en: "...",
+      next: "fin_muerte_conocimiento",
+    },
+  ],
+};
+
+
+export const fin_muerte_conocimiento = {
+  id: "fin_muerte_conocimiento_1",
+  title: "Sin forma",
+  title_en: "Formless",
+  //background: require("../../../assets/backgrounds/huerfano/blanco_total.png"),
+  text: "No queda voz, ni forma, ni sombra. Solo lo que sabés. Eso es lo único que sigue.\n\nAmbur no fue fundada para proteger. Fue construida para aislar.\n\nEl comisionado no teme a la magia. Teme a quienes recuerdan su origen.",
+  text_en:
+    "No voice, no form, no shadow remains. Only what you know. That alone continues.\n\nAmbur was not built to protect. It was built to isolate.\n\nThe commissioner doesn’t fear magic. He fears those who remember its origin.",
+  etiquetas: [],
+  options: [
+    {
+      text: "Seguir sabiendo",
+      text_en: "Keep knowing",
+      next: "fin_muerte_conocimiento_2",
+    },
+  ],
+};
+
+export const fin_muerte_conocimiento_2 = {
+  id: "fin_muerte_conocimiento_2",
+  title: "Ecos",
+  title_en: "Echoes",
+  //background: require("../../../assets/backgrounds/huerfano/blanco_total.png"),
+  text: "Tus padres creían que la memoria podía sanar el mundo. Por eso murieron.\n\nY aunque ya no estés, el eco de lo que aprendiste… podría quedar en alguien más.\n\nEn algún rincón de Ambur, alguien recordará tu historia.",
+  text_en:
+    "Your parents believed memory could heal the world. That’s why they died.\n\nAnd though you are no more, the echo of what you’ve learned… might reach someone else.\n\nSomewhere in Ambur, someone will remember your story.",
+  etiquetas: [
+    "fin_alternativo",
+    "conocimiento_total",
+    "fin_linea_muerte",
+    "epilogo_oculto",
+  ],
+  options: [
+    {
+      text: "Finalizar partida",
+      text_en: "End game",
+      next: "intro_1",
+    },
+  ],
+};
+
+
+export const reformatorio_ritual_entidad = {
+  id: "reformatorio_ritual_entidad_1",
+  title: "La Entidad",
+  title_en: "The Entity",
+  // background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "Cruzás el umbral. El aire desaparece. La gravedad se pliega. Todo es blanco… pero sin luz. Frente a vos, no hay una figura. Hay un espacio donde debería haber algo.\n\nY sin embargo, sabés que está ahí. Que siempre estuvo.\n\n*“Todo poder exige forma. Toda forma exige vacío.”*",
+  text_en:
+    "You cross the threshold. The air vanishes. Gravity folds. Everything is white… but without light. Before you, there is no figure. There is a space where something should be.\n\nAnd yet, you know it’s there. It has always been there.\n\n*“All power demands form. All form demands emptiness.”*",
+  etiquetas: [],
+  options: [
+    {
+      text: "Acercarte a la presencia",
+      text_en: "Approach the presence",
+      next: "reformatorio_ritual_entidad_2",
+    },
+  ],
+};
+
+export const reformatorio_ritual_entidad_2 = {
+  id: "reformatorio_ritual_entidad_2",
+  title: "Dejar de ser",
+  title_en: "Ceasing to be",
+  // background: require("../../../assets/backgrounds/huerfano/ritual_entidad.png"),
+  text: "*“Tu voz, tus lágrimas, tu nombre... No los necesito. Pero vos ya no los vas a usar.”*\n\nLa espiral se cierra detrás tuyo.\n\nY entonces entendés: no estás cruzando hacia otro lugar.\n\nEstás **dejando de ser**.",
+  text_en:
+    "*“Your voice, your tears, your name... I don’t need them. But you won’t use them anymore.”*\n\nThe spiral closes behind you.\n\nAnd then you understand: you’re not crossing into a new place.\n\nYou are **ceasing to be**.",
+  etiquetas: [
+    "perdio_voz",
+    "perdio_emociones",
+    "marca_magia",
+    "cruzo_la_grieta",
+  ],
+  options: [
+    {
+      text: "...",
+      text_en: "...",
+      next: "afueras_inicio",
+    },
+  ],
+};
+
 
 //---------------------- ARCO LAS AFUERAS ----------------------------------------------------------------
 export const afueras_inicio = {

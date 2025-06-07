@@ -44,22 +44,22 @@ function Particle({ x, y, delay = 0 }) {
 export default function ParticleExplosion({ x, y }) {
   const soundRef = useRef(null);
 
-  useEffect(() => {
-  const loadSound = async () => {
-    const { sound } = await Audio.Sound.createAsync(
-      require("../../../assets/sfx/pop.wav")
-    );
-    await sound.setVolumeAsync(0.1); // Volumen reducido al 30%
-    await sound.playAsync();
-    soundRef.current = sound;
-  };
+//   useEffect(() => {
+//   const loadSound = async () => {
+//     const { sound } = await Audio.Sound.createAsync(
+//       require("../../../assets/sfx/pop.wav")
+//     );
+//     await sound.setVolumeAsync(0.1); // Volumen reducido al 30%
+//     await sound.playAsync();
+//     soundRef.current = sound;
+//   };
 
-  loadSound();
+//   loadSound();
 
-  return () => {
-    soundRef.current?.unloadAsync();
-  };
-}, []);
+//   return () => {
+//     soundRef.current?.unloadAsync();
+//   };
+// }, []);
 
   return (
     <>
